@@ -1,0 +1,304 @@
+/* ═══════════════════════════════════════════════════════════════
+   NOOR · base.css — foundations of the emerald darbar
+   ---------------------------------------------------------------
+   Cormorant editorial titles, EB Garamond prose, Marcellus
+   numerals, gold-edged buttons, Amiri for the Quranic voice.
+   Every colour is a token overwritten at runtime by main.js
+   applyTheme().
+   ═══════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-color: var(--night-deep);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* the Quranic voice — Amiri, always dir=rtl in markup */
+[lang="ar"] { font-family: var(--font-arabic); }
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3, h4, p, figure, blockquote, ul, ol, dl, fieldset { margin: 0; padding: 0; }
+fieldset { border: 0; min-inline-size: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: color-mix(in srgb, var(--olive) 36%, transparent); }
+
+/* ═══ THE SUITE — the whole garden walk ═════════════════════════ */
+
+.sheet {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--ivory);
+}
+
+/* ═══ TYPE ══════════════════════════════════════════════════════ */
+
+.script { font-family: var(--font-script); font-weight: 400; }
+
+.label-caps {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .26em;
+  font-size: .68rem;
+  color: var(--champagne-soft);
+}
+
+/* the eyebrow — a garden chapter mark: letterspaced caps with a
+   paisley bud at each end */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .32em;
+  font-size: var(--fs-label);
+  color: var(--champagne-soft);
+  padding-inline: 4px;
+  text-indent: .32em;
+}
+.kicker::before,
+.kicker::after {
+  content: "";
+  width: 9px;
+  height: 11px;
+  flex: none;
+  border: 1px solid var(--gold-line);
+  border-radius: 100% 100% 100% 4px;
+  rotate: 8deg;
+}
+.kicker--center { margin-inline: auto; }
+.kicker--ink { color: var(--burgundy); }
+.kicker--ink::before,
+.kicker--ink::after { border-color: var(--line-strong); }
+
+/* chapter display — engraved Suranna with a script echo */
+.display {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 6vw, 3.7rem);
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: .02em;
+}
+.display .script {
+  font-size: .96em;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--burgundy);
+}
+
+.prose {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 1.9;
+  color: var(--ink);
+}
+
+.prose--dropcap::first-letter {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-size: 3.4em;
+  line-height: .78;
+  float: left;
+  padding: .05em .16em 0 0;
+  color: var(--burgundy);
+}
+
+.hand {
+  font-family: var(--font-hand);
+  font-size: 1.18rem;
+  color: var(--ink-soft);
+}
+
+/* the foil numeral — beaten gold leaf for grand dates */
+.foil {
+  background: linear-gradient(172deg,
+    color-mix(in srgb, var(--champagne) 58%, #F7E3B0) 10%,
+    color-mix(in srgb, var(--champagne) 80%, #FBEBC6) 34%,
+    var(--champagne) 56%,
+    color-mix(in srgb, var(--champagne-soft) 72%, #8A5E2C) 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.small { font-size: .8rem; color: var(--charcoal); }
+
+/* ═══ BUTTONS — gota tickets: gold-edged, ribbon-tied ═══════════ */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: .95rem 1.9rem;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+  font-family: var(--font-ui);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease),
+    background-color .25s var(--ease), color .25s var(--ease),
+    border-color .25s var(--ease), filter .25s var(--ease);
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--gold-faint);
+  border-radius: 2px;
+  pointer-events: none;
+  transition: border-color .25s var(--ease);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:hover::before { border-color: color-mix(in srgb, var(--champagne) 55%, transparent); }
+.btn:active { transform: translateY(0); }
+.btn .icon {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn--emerald {
+  color: var(--paper-raised);
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--burgundy) 84%, white 16%) 0%,
+    var(--burgundy) 46%,
+    var(--burgundy-deep) 100%);
+  border-color: color-mix(in srgb, var(--champagne) 45%, transparent);
+}
+.btn--emerald::before { border-color: color-mix(in srgb, var(--champagne) 38%, transparent); }
+.btn--emerald:hover { filter: brightness(1.08); }
+
+.btn--goldline {
+  color: var(--champagne-soft);
+  background:
+    linear-gradient(160deg,
+      color-mix(in srgb, var(--champagne) 20%, transparent) 0%,
+      transparent 60%) ,
+    var(--paper-raised);
+  border-color: color-mix(in srgb, var(--champagne) 60%, transparent);
+}
+.btn--goldline::before { border-color: color-mix(in srgb, var(--champagne) 42%, transparent); }
+.btn--goldline:hover { filter: brightness(1.04); border-color: var(--champagne); }
+
+.btn--ghost {
+  color: inherit;
+  border-color: color-mix(in srgb, currentColor 38%, transparent);
+  background: transparent;
+}
+.btn--ghost::before { border-color: transparent; }
+.btn--ghost:hover { border-color: currentColor; }
+.btn--ghost.btn--ink { color: var(--ink); }
+
+/* ═══ SHARED ORNAMENT STROKES ═══════════════════════════════════ */
+
+.orn-line { stroke: var(--champagne-soft); fill: none; stroke-width: 1.6; }
+.orn-line--thin { stroke-width: 1; }
+.rule { stroke: var(--paper-line); fill: none; stroke-width: 1; }
+.dot-gold { fill: var(--champagne-soft); }
+.orn-dot { fill: var(--champagne-soft); }
+.petal { fill: color-mix(in srgb, var(--rose) 60%, transparent); }
+
+/* ═══ the chapter divider — a running cusped-dome frieze ══ */
+
+.paisley-band {
+  position: relative;
+  display: block;
+  height: 32px;
+  margin: 0 auto;
+  max-width: 340px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='32'%3E%3Cg fill='none' stroke='%23A5823C' stroke-opacity='.55'%3E%3Cpath d='M 20 28 C 20 19 24 13.5 28 12 C 32 13.5 36 19 36 28'/%3E%3Cpath d='M 23 28 C 23 22 25 17.8 28 16.4 C 31 17.8 33 22 33 28'/%3E%3Cpath d='M 28 12 C 28 9.6 28.6 8 28 5.6'/%3E%3Ccircle cx='28' cy='4.4' r='1.4' fill='%23A5823C' fill-opacity='.55'/%3E%3Cpath d='M 2 28 H 14 M 42 28 H 54'/%3E%3Ccircle cx='10' cy='28' r='1.2' fill='%23A5823C' fill-opacity='.55'/%3E%3Ccircle cx='46' cy='28' r='1.2' fill='%23A5823C' fill-opacity='.55'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+  pointer-events: none;
+}
+
+/* ═══ FLOATING AUDIO — the only piece of "chrome" allowed ═══════ */
+
+.audio-float {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+  color: var(--gilding);
+  display: grid;
+  place-items: center;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.audio-float:hover { transform: translateY(-1px); }
+.audio-float .icon { width: 18px; height: 18px; }
+.audio-float[hidden] { display: none; }
+
+/* ═══ REVEAL MOTION ═════════════════════════════════════════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity .9s ease,
+    transform .9s var(--ease);
+}
+.reveal.in-view { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* while the seal holds the garden waits behind the gate */
+body.intro-pending { overflow: hidden; height: 100dvh; }
+body.intro-pending #main-content { opacity: 0; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}

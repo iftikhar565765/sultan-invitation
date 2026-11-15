@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel:wght@400;500&family=Great+Vibes&family=Jost:wght@300;400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1200px; height:630px; overflow:hidden; }
+  body {
+    background:
+      url("assets/art/velvet-emerald.png") center / cover,
+      radial-gradient(120% 80% at 50% -10%, rgba(78,140,130,.32) 0%, transparent 58%),
+      radial-gradient(90% 50% at 50% 115%, rgba(198,162,79,.22) 0%, transparent 66%),
+      #09211A;
+    position: relative;
+  }
+  .medal { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:460px; opacity:.15; }
+  .inner { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+  .bismillah { font-family:'Amiri',serif; color:rgba(198,162,79,.9); font-size:30px; margin-bottom:14px; }
+  .eyebrow { font-family:'Jost',sans-serif; font-weight:300; color:rgba(239,232,216,.72); font-size:17px; letter-spacing:.34em; text-indent:.34em; text-transform:uppercase; margin-bottom:10px; }
+  .names { font-family:'Great Vibes',cursive; font-size:118px; line-height:1.05; color:#E8D5A8; text-shadow:0 4px 40px rgba(198,162,79,.35); }
+  .rule { display:flex; align-items:center; gap:14px; margin:18px 0 14px; }
+  .rule i { width:150px; height:1px; background:linear-gradient(90deg, transparent, rgba(198,162,79,.8)); }
+  .rule i:last-child { background:linear-gradient(90deg, rgba(198,162,79,.8), transparent); }
+  .rule svg { width:26px; height:26px; }
+  .date { font-family:'Cinzel',serif; color:#C6A24F; font-size:32px; letter-spacing:.22em; }
+  .venue { font-family:'Cormorant Garamond',serif; color:rgba(239,232,216,.66); font-size:20px; letter-spacing:.12em; margin-top:10px; }
+  .lantern-l, .lantern-r { position:absolute; top:-30px; width:200px; height:auto; opacity:.9; }
+  .lantern-l { left:120px; }
+  .lantern-r { right:120px; transform:scaleX(-1); }
+  .crescent { position:absolute; top:36px; left:50%; transform:translateX(-50%); width:64px; }
+  .sprig-bl, .sprig-br { position:absolute; bottom:-16px; width:clamp(180px, 17vw, 230px); height:auto; }
+  .sprig-bl { left:-16px; transform:rotate(8deg); opacity:.9; }
+  .sprig-br { right:-16px; transform:scaleX(-1) rotate(8deg); opacity:.9; }
+</style>
+</head>
+<body>
+<img class="medal" src="assets/art/shamsa-sultan.png" alt="">
+<img class="crescent" src="assets/art/crescent-sultan.png" alt="">
+<img class="lantern-l" src="assets/art/lantern-sultan.png" alt="">
+<img class="lantern-r" src="assets/art/lantern-sultan.png" alt="">
+<div class="inner">
+  <p class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+  <p class="eyebrow">With the blessings of Allah Almighty</p>
+  <p class="names">Layla &amp; Omar</p>
+  <div class="rule"><i></i><svg viewBox="0 0 22 22" fill="none" stroke="#C6A24F" stroke-width="1.3"><path d="M11 2 L14.5 11 L11 20 L7.5 11 Z"/></svg><i></i></div>
+  <p class="date">09 · 10 · 2027</p>
+  <p class="venue">The The Shahi Divan · Hyderabad</p>
+</div>
+<img class="sprig-bl" src="assets/art/roses-sultan.png" alt="">
+<img class="sprig-br" src="assets/art/roses-sultan.png" alt="">
+</body>
+</html>

@@ -1,0 +1,372 @@
+/* ═══════════════════════════════════════════════════════════════
+   SULTAN · theme.css — the imperial court skin
+   ---------------------------------------------------------------
+   The page is polished onyx lit by candlelight; the invitation
+   rises as ivory letters framed in matte antique gold. This file
+   re-skins every scene on top of the shared base CSS: cinematic
+   grain, letterbox opening, gold dust, light sweeps, and the
+   sultan typography voices.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1 · the onyx world ───────────────────────────────────────── */
+
+body {
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--night-deep) 84%, transparent) 0%,
+      color-mix(in srgb, var(--night-deep) 92%, transparent) 100%),
+    url("assets/art/marble-onyx.jpg") center / cover no-repeat fixed,
+    var(--night-deep);
+}
+
+/* film grain — the whole page is one cinematic frame */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 9990;
+  pointer-events: none;
+  opacity: .05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 1.4s steps(4) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1.2%, .8%); }
+  50% { transform: translate(.9%, -1.1%); }
+  75% { transform: translate(-.6%, -.7%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── 2 · the opening — letterbox cinema ───────────────────────── */
+
+.opening {
+  background:
+    radial-gradient(120% 70% at 50% -10%, color-mix(in srgb, var(--champagne) 15%, transparent) 0%, transparent 58%),
+    radial-gradient(90% 46% at 50% 112%, color-mix(in srgb, var(--champagne) 10%, transparent) 0%, transparent 66%),
+    linear-gradient(180deg, #000 0%, var(--night-deep) 34%, var(--night-deep) 100%);
+}
+
+/* letterbox bars — cinema curtains that part when the seal breaks */
+.letterbox {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: max(11vh, 72px);
+  z-index: 40;
+  background: linear-gradient(180deg, #000 0%, color-mix(in srgb, #000 92%, var(--champagne) 8%) 100%);
+  pointer-events: none;
+  transition: transform 1.5s var(--ease), opacity 1.5s var(--ease);
+}
+.letterbox--top { top: 0; transform-origin: top; box-shadow: 0 1px 0 color-mix(in srgb, var(--champagne) 34%, transparent); }
+.letterbox--bottom { bottom: 0; transform-origin: bottom; box-shadow: 0 -1px 0 color-mix(in srgb, var(--champagne) 34%, transparent); }
+.opening.is-open .letterbox--top { transform: translateY(-102%); }
+.opening.is-open .letterbox--bottom { transform: translateY(102%); }
+
+/* the flap liner is onyx silk with a fine gold star lattice */
+.envelope__flap-liner {
+  background:
+    radial-gradient(130% 110% at 50% 0%, rgba(233, 214, 174, .26), transparent 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23C8A45D' stroke-opacity='.5'%3E%3Cpath d='M 22 4 L 26.6 15.4 L 38 20 L 26.6 24.6 L 22 36 L 17.4 24.6 L 6 20 L 17.4 15.4 Z'/%3E%3Ccircle cx='22' cy='20' r='2.2'/%3E%3Cpath d='M 0 20 H 6 M 38 20 H 44 M 22 0 V 4 M 22 36 V 40'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(184deg,
+      color-mix(in srgb, var(--night) 88%, var(--champagne) 12%) 0%,
+      color-mix(in srgb, var(--night-deep) 90%, var(--champagne) 10%) 100%);
+}
+
+/* ── 3 · the hero — the imperial stage ────────────────────────── */
+
+.scene--hero {
+  background:
+    radial-gradient(120% 62% at 50% 0%, color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 56%),
+    radial-gradient(76% 42% at 50% 100%, color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 72%);
+}
+
+/* candlelight vignette around the whole stage */
+.scene--hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(118% 88% at 50% 42%, transparent 52%, color-mix(in srgb, #000 42%, transparent) 100%);
+}
+
+/* gold dust drifting through the beam */
+.gold-dust { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.gold-dust i {
+  position: absolute;
+  bottom: -2%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-bright) 0%, transparent 72%);
+  opacity: 0;
+  animation: dust-rise var(--dust-dur, 11s) ease-in var(--dust-delay, 0s) infinite;
+}
+@keyframes dust-rise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.7); }
+  12% { opacity: var(--dust-op, .8); }
+  62% { opacity: calc(var(--dust-op, .8) * .55); }
+  100% { opacity: 0; transform: translate3d(var(--dust-x, 12px), -108vh, 0) scale(1.15); }
+}
+
+/* the shamsa lattice reads as gilded light behind the arch */
+.noor-stage__shamsa { opacity: .16; filter: drop-shadow(0 0 26px color-mix(in srgb, var(--champagne) 22%, transparent)); }
+
+/* the arch itself glows from within the court */
+.arch-card__frame { filter: drop-shadow(0 30px 60px color-mix(in srgb, #000 55%, transparent)); }
+
+/* the interior of the arch is an ivory letter raised on the onyx stage */
+.arch-card__inner {
+  left: 19.5%;
+  right: 19.5%;
+  top: 31.5%;
+  bottom: 6%;
+  background:
+    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 42%),
+    linear-gradient(180deg,
+      var(--paper-raised) 0%,
+      var(--ivory) 46%,
+      color-mix(in srgb, var(--parchment) 82%, var(--ivory) 18%) 100%);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
+    inset 0 0 46px color-mix(in srgb, var(--champagne) 12%, transparent),
+    0 26px 60px -24px color-mix(in srgb, #000 62%, transparent);
+  justify-content: center;
+  padding-inline: clamp(1rem, 3.4vw, 1.8rem);
+}
+
+/* drifting gold motes — candlelight pollen */
+.noor-stage__mote {
+  background: radial-gradient(circle, var(--gold-bright) 0%, transparent 70%);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--champagne) 55%, transparent);
+}
+
+/* ── 4 · scene rhythm — ivory letters between onyx seams ──────── */
+
+.scene--story,
+.scene--details,
+.scene--palette,
+.scene--std,
+.scene--venue,
+.scene--rsvp {
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--ivory) 96%, var(--champagne) 4%) 0%,
+      var(--ivory) 9%,
+      var(--ivory) 91%,
+      color-mix(in srgb, var(--parchment) 88%, var(--ivory) 12%) 100%);
+  border-block: 14px solid var(--night-deep);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--champagne) 34%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--champagne) 34%, transparent),
+    0 26px 70px -30px color-mix(in srgb, #000 72%, transparent);
+}
+
+/* dark bands — the ayat, countdown and closing stay court-dark */
+.scene--ayat,
+.scene--countdown,
+.scene--closing {
+  background:
+    radial-gradient(110% 82% at 50% 0%, color-mix(in srgb, var(--champagne) 10%, transparent) 0%, transparent 58%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 80%);
+}
+
+.scene--itinerary {
+  background:
+    radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--champagne) 8%, transparent) 0%, transparent 60%),
+    linear-gradient(180deg, var(--night-deep) 0%, var(--night) 62%);
+}
+
+/* ── 5 · the sultan typography ────────────────────────────────── */
+
+.display,
+.arch-card__title,
+.venue-title {
+  font-family: var(--font-display);
+  letter-spacing: .05em;
+}
+
+.kicker {
+  font-family: var(--font-ui);
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.kicker--ink { color: var(--gold-ink); }
+.kicker--light { color: var(--gold-bright); }
+
+.script--names,
+.opening__names,
+.envelope__letter-names { font-family: var(--font-script); }
+
+/* numerals carry the engraved-plaque voice */
+.count-clock strong,
+.std-numerals,
+.envelope__letter-date { font-family: var(--font-display); letter-spacing: .1em; }
+
+/* on dark grounds gold text is safe; on ivory it is not */
+.scene--ayat .display,
+.scene--countdown .display,
+.scene--closing .display,
+.scene--itinerary .display { color: var(--gold-bright); }
+
+/* ── 6 · contrast law — gold never reads body on ivory ────────── */
+
+.scene--story .prose,
+.scene--details .prose,
+.scene--palette .prose,
+.scene--venue .prose,
+.scene--rsvp .prose,
+.scene--std .prose { color: var(--ink); }
+
+.scene--story .ink-soft,
+.scene--details .ink-soft,
+.scene--palette .ink-soft,
+.scene--venue .ink-soft,
+.scene--rsvp .ink-soft,
+.scene--std .ink-soft,
+.particulars .prose { color: var(--ink-soft); }
+
+/* ── 7 · motion — filmic reveals ──────────────────────────────── */
+
+.reveal {
+  transition:
+    opacity .9s var(--ease),
+    transform 1.15s var(--ease);
+}
+.scene-body .reveal:nth-child(2) { transition-delay: .08s; }
+.scene-body .reveal:nth-child(3) { transition-delay: .16s; }
+.scene-body .reveal:nth-child(4) { transition-delay: .24s; }
+.scene-body .reveal:nth-child(5) { transition-delay: .3s; }
+
+/* a slow light sweep across the dark-band display titles */
+.scene--countdown .count-script em,
+.scene--ayat .ayat-title {
+  background: linear-gradient(100deg,
+    var(--gold-bright) 30%,
+    #F5E7BF 46%,
+    var(--gold-bright) 62%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: name-shimmer 7s ease-in-out 1.6s infinite;
+}
+@keyframes name-shimmer {
+  0%, 100% { background-position: 12% 0; }
+  50% { background-position: 88% 0; }
+}
+
+/* the mini ayat — a small Amiri plate under the story */
+.mini-ayat {
+  margin: clamp(1.6rem, 4vh, 2.4rem) auto 0;
+  max-width: 34rem;
+  padding: clamp(1.1rem, 3vh, 1.6rem) clamp(1.2rem, 3.4vw, 1.9rem);
+  background:
+    linear-gradient(180deg, var(--paper-raised) 0%, var(--parchment) 100%);
+  border: 1px solid color-mix(in srgb, var(--champagne) 44%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+.mini-ayat__ar {
+  margin: 0;
+  font-family: var(--font-arabic);
+  font-size: clamp(1.5rem, 3.4vw, 1.9rem);
+  line-height: 2;
+  color: var(--ink);
+}
+.mini-ayat__en {
+  margin: .7rem 0 0;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(.98rem, 2vw, 1.08rem);
+  color: var(--ink-soft);
+}
+.mini-ayat__ref {
+  margin: .55rem 0 0;
+  color: var(--gold-ink);
+}
+
+/* lanterns sway slower — courtly, unhurried */
+.noor-stage__lantern,
+.opening__lantern { animation-duration: 9.5s; }
+
+/* buttons — burnished imperial gold */
+.btn {
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+  font-weight: 600;
+}
+.btn--emerald,
+.btn--primary {
+  background: linear-gradient(165deg, var(--gold-bright) 0%, var(--champagne) 48%, var(--champagne-soft) 100%);
+  color: var(--night-deep);
+  border: 1px solid color-mix(in srgb, var(--champagne-soft) 60%, transparent);
+  box-shadow: 0 10px 26px -12px color-mix(in srgb, #000 60%, transparent);
+}
+.btn--emerald:hover,
+.btn--primary:hover { filter: brightness(1.06); }
+.btn--ghost {
+  border: 1px solid color-mix(in srgb, var(--champagne) 52%, transparent);
+  color: var(--gold-bright);
+  background: transparent;
+}
+
+/* ── 8 · details — the court's hardware ───────────────────────── */
+
+/* event cards: onyx plaques with gold numerals */
+.scene--details .event-card,
+.event {
+  border: 1px solid color-mix(in srgb, var(--champagne) 30%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+/* the ayat plate is a gold-framed onyx panel */
+.ayat-plate {
+  border: 1px solid color-mix(in srgb, var(--champagne) 42%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 14%, transparent),
+    0 24px 70px -30px color-mix(in srgb, #000 70%, transparent);
+}
+
+/* palette swatches — framed like inlaid stones */
+.palette-swatch,
+.swatch {
+  border: 1px solid color-mix(in srgb, var(--champagne) 36%, transparent);
+}
+
+/* form fields on ivory paper keep ink contrast */
+.field input,
+.field textarea,
+.field select {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--champagne-soft) 44%, transparent);
+}
+
+/* footer — a last strip of onyx */
+.site-footer {
+  background: var(--night-deep);
+  border-top: 1px solid color-mix(in srgb, var(--champagne) 26%, transparent);
+}
+.site-footer, .site-footer a { color: var(--night-ink); }
+
+/* ── 9 · reduced motion & small screens ───────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .grain, .gold-dust i { animation: none; }
+  .hero-names, .noor-stage .script--names {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--gold-bright);
+  }
+}
+
+@media (max-width: 720px) {
+  .letterbox { height: max(8vh, 56px); }
+  .gold-dust i { display: none; }
+  body { background-attachment: scroll; }
+}

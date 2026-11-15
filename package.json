@@ -1,0 +1,23 @@
+{
+  "name": "sultan-invitation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sultan — a Muslim wedding invitation: The names of Layla and Omar inside a golden muqarnas arch on polished onyx, with amber fanous lanterns, a crescent moon and gold arabesque — a Nikah invitation sealed in gold.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && npm run db:migrate:local && wrangler dev --port 8788",
+    "deploy": "npm run build && wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply kalyanam-invitations --local",
+    "db:migrate:remote": "wrangler d1 migrations apply kalyanam-invitations --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.156.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "allowScripts": {
+    "workerd@1.20261023.1": true
+  }
+}

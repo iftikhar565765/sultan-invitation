@@ -1,0 +1,1215 @@
+/* ═══════════════════════════════════════════════════════════════
+   NOOR · sections.css — the emerald darbar walk
+   ---------------------------------------------------------------
+   One voice: pearl ivory paper, deep emerald silk bands, antique
+   gold hairlines, Amiri for the Quranic voice, Pinyon for the
+   names. Decorations are soft transparent art PNGs; the only
+   inline SVG is fine line-work (captions, icons, stars).
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══ THE HERO — the mihrab niche ═══════════════════════════════ */
+
+.scene {
+  position: relative;
+  padding: var(--scene-pad-y) var(--scene-pad-x);
+}
+
+.scene--hero {
+  padding-top: clamp(3rem, 7vh, 5rem);
+  padding-bottom: clamp(2.6rem, 6vh, 4.2rem);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 55%),
+    var(--ivory);
+}
+
+.noor-stage {
+  position: relative;
+  width: min(100%, 1080px);
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+}
+
+/* the shamsa lattice glowing behind everything */
+.noor-stage__shamsa {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(120%, 980px);
+  opacity: .14;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* hanging fanous lanterns at the shoulders */
+.noor-stage__lantern {
+  position: absolute;
+  top: -1.6rem;
+  width: clamp(4.6rem, 9vw, 7.2rem);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 14px 24px color-mix(in srgb, var(--night-deep) 34%, transparent));
+  transform-origin: 50% 0;
+  animation: lantern-sway 7s ease-in-out infinite alternate;
+}
+.noor-stage__lantern--l { left: clamp(-1rem, -2vw, 4rem); }
+.noor-stage__lantern--r { right: clamp(-1rem, -2vw, 4rem); animation-delay: -2.6s; }
+@keyframes lantern-sway {
+  from { rotate: -2.4deg; }
+  to   { rotate: 2.4deg; }
+}
+
+/* a small crescent-and-star ornament above the arch */
+.noor-stage__crescent {
+  position: relative;
+  z-index: 1;
+  width: clamp(3.4rem, 7vw, 5rem);
+  margin-bottom: clamp(.4rem, 1.4vh, 1rem);
+  opacity: .92;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* drifting lantern-light motes */
+.noor-stage__mote {
+  position: absolute;
+  z-index: 0;
+  left: var(--x);
+  top: var(--y);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 999px;
+  background: radial-gradient(closest-side,
+    color-mix(in srgb, var(--champagne) 82%, white 18%),
+    color-mix(in srgb, var(--champagne) 30%, transparent) 68%, transparent);
+  opacity: var(--o);
+  animation: mote-float var(--t) ease-in-out var(--d) infinite alternate;
+  pointer-events: none;
+}
+@keyframes mote-float {
+  from { transform: translateY(0); opacity: calc(var(--o) * .55); }
+  to   { transform: translateY(-26px); opacity: var(--o); }
+}
+
+/* ── the arch card — one tall mihrab niche holding the invitation ── */
+
+.arch-card {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 500px);
+  aspect-ratio: 827 / 1134;
+}
+
+.arch-card__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 24px 48px color-mix(in srgb, var(--night-deep) 30%, transparent));
+  z-index: 0;
+}
+
+/* the letter resting inside the marble niche */
+.arch-card__inner {
+  position: absolute;
+  left: 11.5%;
+  right: 11.5%;
+  top: 15.5%;
+  bottom: 2.5%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6% 8%;
+  background:
+    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 55%),
+    color-mix(in srgb, var(--paper-raised) 96%, transparent);
+  border-radius: 999px 999px 6px 6px;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
+    inset 0 0 0 5px color-mix(in srgb, var(--paper-raised) 90%, transparent),
+    inset 0 0 0 6px color-mix(in srgb, var(--champagne) 22%, transparent),
+    0 18px 44px -18px color-mix(in srgb, var(--night-deep) 38%, transparent);
+}
+.arch-card__inner > * { max-width: 100%; }
+.arch-card__inner > * + * { margin-top: clamp(.45rem, 1.6vh, .9rem); }
+
+.arch-card__bismillah {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.05rem, 3.2vw, 1.35rem);
+  line-height: 1.7;
+  color: var(--burgundy);
+  margin-bottom: 0;
+}
+
+.arch-card__blessing {
+  color: var(--champagne-soft);
+  letter-spacing: .2em;
+  font-size: clamp(.5rem, 1.4vw, .62rem);
+  line-height: 2;
+  max-width: 100%;
+}
+
+.arch-card__invite {
+  margin-top: 0;
+  font-family: var(--font-ui);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: clamp(.52rem, 1.6vw, .64rem);
+  line-height: 2;
+  color: var(--ink-soft);
+  max-width: 100%;
+}
+
+.arch-card__names {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .05rem;
+  outline: none;
+}
+
+.arch-card__name {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7.5vw, 3.7rem);
+  line-height: 1.04;
+  background: linear-gradient(168deg,
+    color-mix(in srgb, var(--burgundy) 78%, var(--emerald-glow, #1B7A5F) 22%) 12%,
+    var(--burgundy) 52%,
+    color-mix(in srgb, var(--champagne) 30%, var(--burgundy-deep) 70%) 94%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--champagne) 26%, transparent));
+}
+
+.arch-card__and {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--champagne-soft);
+  letter-spacing: .08em;
+}
+
+.arch-card__rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0;
+}
+.arch-card__rule i {
+  display: block;
+  width: clamp(22px, 8%, 52px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--paper-line));
+}
+.arch-card__rule i:last-child { transform: scaleX(-1); }
+.arch-card__rule img { width: clamp(1.6rem, 5%, 2.1rem); height: auto; opacity: .9; }
+
+.arch-card__date { margin-top: 0; }
+.arch-card__date-week {
+  color: var(--champagne-soft);
+  letter-spacing: .3em;
+  font-size: clamp(.56rem, 1.6vw, .68rem);
+}
+.arch-card__date-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .9rem;
+  margin-top: .3rem;
+}
+.arch-card__date-side {
+  color: var(--ink-soft);
+  font-size: clamp(.6rem, 1.8vw, .72rem);
+}
+.arch-card__date-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5.6vw, 2.6rem);
+  line-height: 1;
+  color: var(--burgundy);
+  letter-spacing: .04em;
+}
+
+.arch-card__nikah {
+  margin-top: 0;
+  color: var(--ink-soft);
+  letter-spacing: .16em;
+  font-size: clamp(.52rem, 1.6vw, .64rem);
+  line-height: 1.9;
+  max-width: 100%;
+}
+.arch-card__nikah-sep { color: var(--gold-line); }
+
+.arch-card__venue {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .22rem;
+}
+.arch-card__venue-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--champagne-soft);
+  font-size: clamp(.52rem, 1.5vw, .62rem);
+}
+.arch-card__venue-label i {
+  display: block;
+  width: 26px;
+  height: 1px;
+  background: var(--gold-line);
+}
+.arch-card__venue-name {
+  font-family: var(--font-display);
+  font-size: clamp(.95rem, 2.8vw, 1.2rem);
+  letter-spacing: .06em;
+  color: var(--ink);
+}
+.arch-card__venue-address {
+  font-family: var(--font-body);
+  font-size: clamp(.6rem, 1.7vw, .72rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 26ch;
+}
+
+.arch-card__closing {
+  margin-top: 0;
+  font-size: clamp(1.1rem, 3.4vw, 1.4rem);
+  color: var(--champagne-soft);
+}
+
+/* the base — roses and jasmine, swags */
+.noor-orn {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+.noor-orn--roses-bl,
+.noor-orn--roses-br {
+  bottom: -2.2rem;
+  width: clamp(7rem, 16vw, 12rem);
+  filter: drop-shadow(0 10px 22px color-mix(in srgb, var(--night-deep) 26%, transparent));
+}
+.noor-orn--roses-bl { left: -1.6rem; transform: rotate(-6deg); }
+.noor-orn--roses-br { right: -1.6rem; transform: scaleX(-1) rotate(-6deg); }
+.noor-orn--swag-bl,
+.noor-orn--swag-br {
+  bottom: 18%;
+  width: clamp(5.4rem, 12vw, 9rem);
+  opacity: .85;
+}
+.noor-orn--swag-bl { left: -2.2rem; transform: rotate(14deg); }
+.noor-orn--swag-br { right: -2.2rem; transform: scaleX(-1) rotate(14deg); }
+
+/* the signboard line + scroll cue beneath the stage */
+.hero-signboard {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(2.6rem, 6vh, 4rem);
+  display: grid;
+  justify-items: center;
+  gap: 1.2rem;
+}
+.hero-signboard__line { color: var(--champagne-soft); }
+
+.hero-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--ink-soft);
+}
+.hero-scroll__arrow {
+  width: 15px;
+  height: 15px;
+  animation: scroll-pulse 2.4s var(--ease) infinite;
+}
+@keyframes scroll-pulse {
+  0%, 100% { transform: translateY(0); opacity: .7; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
+
+/* ═══ THE CHRONICLE — story ═════════════════════════════════════ */
+
+.scene--story {
+  background: var(--ivory);
+  overflow: hidden;
+}
+
+.story-corner {
+  position: absolute;
+  width: clamp(8rem, 18vw, 14rem);
+  opacity: .8;
+  pointer-events: none;
+  user-select: none;
+}
+.story-corner--tl { top: -1.8rem; left: -1.8rem; transform: rotate(-4deg); }
+.story-corner--br { bottom: -1.8rem; right: -1.8rem; transform: rotate(176deg); }
+
+.scene-body {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 880px);
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+.scene-body--narrow { width: min(100%, 720px); }
+
+.scene-body > * + * { margin-top: clamp(1.1rem, 3vh, 1.7rem); }
+.scene-body > .display + .prose { margin-top: clamp(1.4rem, 3.4vh, 2rem); }
+
+.kicker { text-align: center; }
+.kicker--light { color: var(--gilding-soft); }
+.kicker--ink { color: var(--burgundy); }
+
+.prose { max-width: 62ch; }
+.prose--dropcap { text-align: left; }
+.prose--dropcap::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.1em;
+  line-height: .8;
+  float: left;
+  padding: .06em .14em 0 0;
+  color: var(--burgundy);
+}
+
+.story-quote {
+  display: grid;
+  justify-items: center;
+  gap: .9rem;
+  max-width: 46ch;
+  padding-top: clamp(.6rem, 2vh, 1.2rem);
+}
+.story-quote__rule { width: min(220px, 60%); height: 16px; }
+.story-quote__text {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  line-height: 1.5;
+  color: var(--burgundy);
+}
+.story-quote__label { color: var(--ink-soft); letter-spacing: .2em; line-height: 1.8; }
+
+.story-note { margin-top: clamp(1.4rem, 3.6vh, 2rem); }
+.story-note-credit { display: block; font-size: .92em; opacity: .75; margin-top: .3rem; }
+
+.story-captions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.2rem, 4vw, 2.6rem);
+  margin-top: clamp(1.6rem, 4vh, 2.4rem);
+}
+.story-caption {
+  display: grid;
+  justify-items: center;
+  gap: .5rem;
+  max-width: 15ch;
+}
+.story-caption svg { width: 54px; height: 38px; }
+.story-caption span {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--ink-soft);
+}
+
+/* ═══ THE BLESSED VERSE — 30:21 ═════════════════════════════════ */
+
+.scene--ayat {
+  background:
+    radial-gradient(110% 90% at 50% 0%, color-mix(in srgb, var(--emerald-soft, #1B7A5F) 26%, transparent) 0%, transparent 58%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
+  overflow: hidden;
+}
+
+.ayat-arch {
+  position: absolute;
+  top: -8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(130%, 760px);
+  opacity: .1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.scene--ayat .scene-body { margin-top: clamp(1rem, 3vh, 2rem); }
+
+.ayat-plate {
+  position: relative;
+  width: min(100%, 640px);
+  padding: clamp(2.4rem, 7vw, 4.2rem) clamp(1.6rem, 6vw, 3.6rem);
+  background:
+    radial-gradient(90% 70% at 50% 110%, color-mix(in srgb, var(--champagne) 10%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg, color-mix(in srgb, var(--night-deep) 72%, black) 0%, var(--night-deep) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 34%, transparent),
+    inset 0 0 0 7px transparent,
+    inset 0 0 60px rgba(0, 0, 0, .38),
+    var(--shadow-lift);
+}
+
+.ayat-plate__corner {
+  position: absolute;
+  width: clamp(3.6rem, 9vw, 5.6rem);
+  opacity: .85;
+  pointer-events: none;
+}
+.ayat-plate__corner--tl { top: -.9rem; left: -.9rem; }
+.ayat-plate__corner--tr { top: -.9rem; right: -.9rem; transform: scaleX(-1); }
+.ayat-plate__corner--bl { bottom: -.9rem; left: -.9rem; transform: scaleY(-1); }
+.ayat-plate__corner--br { bottom: -.9rem; right: -.9rem; transform: scale(-1, -1); }
+
+.ayat-arabic {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.35rem, 3.6vw, 1.9rem);
+  line-height: 2.05;
+  color: var(--gilding);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .4);
+}
+
+.ayat-translation {
+  margin-top: clamp(1.2rem, 3vh, 1.8rem);
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(.95rem, 2.4vw, 1.12rem);
+  line-height: 1.85;
+  color: var(--night-ink);
+  max-width: 52ch;
+  margin-inline: auto;
+}
+
+.ayat-reference {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(1.2rem, 3vh, 1.7rem);
+  color: var(--gilding-soft);
+  font-size: clamp(.56rem, 1.6vw, .68rem);
+}
+.ayat-reference i {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+}
+
+/* ═══ SAVE THE DATE ═════════════════════════════════════════════ */
+
+.scene--std {
+  position: relative;
+  background: var(--ivory);
+  overflow: hidden;
+}
+
+.std-band {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(90% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 9%, transparent) 0%, transparent 60%),
+    radial-gradient(120% 80% at 50% 110%, color-mix(in srgb, var(--olive) 12%, transparent) 0%, transparent 58%);
+  pointer-events: none;
+}
+
+.scene-body--std { position: relative; z-index: 1; }
+
+.std-emblem {
+  width: clamp(4.6rem, 11vw, 6.6rem);
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 0 0 3px var(--paper-raised),
+    inset 0 0 0 4px color-mix(in srgb, var(--champagne) 55%, transparent),
+    0 10px 24px color-mix(in srgb, var(--night-deep) 30%, transparent);
+}
+
+.std-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.4vw, 3.1rem);
+  color: var(--ink);
+  letter-spacing: .04em;
+}
+
+.std-crossing {
+  font-size: clamp(1.3rem, 3.4vw, 1.7rem);
+  color: var(--burgundy);
+}
+
+.std-numerals {
+  font-family: var(--font-display);
+  font-size: var(--fs-numerals);
+  letter-spacing: .14em;
+  color: var(--champagne-soft);
+}
+
+.std-display {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(.95rem, 2.3vw, 1.1rem);
+  color: var(--ink-soft);
+}
+
+.std-note { font-family: var(--font-body); font-size: .9rem; color: var(--ink-soft); }
+
+.std-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: clamp(.6rem, 2vh, 1.2rem);
+}
+
+.std-seal {
+  position: relative;
+  width: clamp(4.6rem, 12vw, 5.6rem);
+  aspect-ratio: 1;
+  margin-top: clamp(1.6rem, 4vh, 2.4rem);
+  display: grid;
+  place-items: center;
+}
+.std-seal .seal__art,
+.closing-seal .seal__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 18px color-mix(in srgb, var(--night-deep) 36%, transparent));
+}
+.std-seal .seal__initials,
+.closing-seal .seal__initials {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(.68rem, 2vw, .82rem);
+  letter-spacing: .12em;
+  color: #4A380C;
+  text-shadow: 0 0 5px rgba(253, 251, 243, .9);
+}
+
+/* ═══ THE CELEBRATIONS — event timeline ═════════════════════════ */
+
+.scene--details { background: var(--ivory); }
+
+.details-intro { margin-top: clamp(.9rem, 2.4vh, 1.4rem); }
+
+.events {
+  position: relative;
+  width: min(100%, 760px);
+  margin: clamp(2.2rem, 6vh, 3.4rem) auto 0;
+  display: grid;
+  gap: clamp(1.2rem, 3vh, 1.8rem);
+  list-style: none;
+  padding: 0;
+}
+
+/* the connecting thread */
+.events::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  bottom: -1rem;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg,
+    transparent, var(--gold-line) 12%, var(--gold-line) 88%, transparent);
+}
+
+.event {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(3.4rem, auto) 1fr;
+  align-items: center;
+  gap: clamp(.8rem, 2.4vw, 1.6rem);
+}
+
+.event__node {
+  grid-column: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(3rem, 8vw, 3.8rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: var(--paper-raised);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 44%, transparent),
+    0 6px 16px color-mix(in srgb, var(--night-deep) 16%, transparent);
+}
+.event__node--prime {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 70%, transparent),
+    inset 0 0 0 5px color-mix(in srgb, var(--champagne) 14%, transparent),
+    0 8px 20px color-mix(in srgb, var(--night-deep) 22%, transparent);
+}
+.event__star { width: 62%; height: auto; }
+
+.event__card {
+  padding: clamp(1.1rem, 3.4vw, 1.6rem) clamp(1.1rem, 3.4vw, 1.7rem);
+  background: var(--paper-raised);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 26%, transparent),
+    0 10px 26px -12px color-mix(in srgb, var(--night-deep) 30%, transparent);
+  text-align: center;
+}
+.event:nth-child(odd) .event__card { grid-column: 1; grid-row: 1; }
+.event:nth-child(even) .event__card { grid-column: 3; grid-row: 1; }
+
+.event__card--prime {
+  background:
+    radial-gradient(120% 100% at 50% 0%, color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 55%),
+    var(--paper-raised);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 58%, transparent),
+    0 16px 36px -14px color-mix(in srgb, var(--night-deep) 40%, transparent);
+}
+
+.event__index {
+  display: block;
+  font-family: var(--font-arabic);
+  font-size: 1.05rem;
+  color: var(--champagne-soft);
+  margin-bottom: .35rem;
+}
+
+.event__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 3.2vw, 1.5rem);
+  letter-spacing: .05em;
+  color: var(--burgundy);
+}
+
+.event__when {
+  margin-top: .45rem;
+  font-family: var(--font-ui);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: clamp(.56rem, 1.7vw, .68rem);
+  color: var(--champagne-soft);
+}
+
+.event__note {
+  margin-top: .55rem;
+  font-family: var(--font-body);
+  font-size: clamp(.84rem, 2vw, .94rem);
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+/* the particulars plate */
+.particulars {
+  width: min(100%, 760px);
+  margin: clamp(2.6rem, 7vh, 4rem) auto 0;
+  padding: clamp(1.6rem, 5vw, 2.6rem);
+  background:
+    radial-gradient(100% 80% at 50% 0%, color-mix(in srgb, var(--champagne) 8%, transparent) 0%, transparent 55%),
+    var(--paper-wash);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 34%, transparent),
+    inset 0 0 0 6px var(--paper-raised),
+    inset 0 0 0 7px color-mix(in srgb, var(--champagne) 22%, transparent),
+    var(--shadow-soft);
+  text-align: center;
+}
+
+.particulars-eyebrow { color: var(--champagne-soft); }
+
+.particulars-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(1.2rem, 4vw, 2.2rem);
+  margin-top: clamp(1.4rem, 4vh, 2rem);
+}
+
+.particular { display: grid; gap: .4rem; justify-items: center; }
+.particular-label { color: var(--champagne-soft); }
+.particular-value {
+  font-family: var(--font-display);
+  font-size: clamp(.98rem, 2.6vw, 1.15rem);
+  color: var(--ink);
+  line-height: 1.5;
+}
+.particular-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .84rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 30ch;
+}
+
+/* ═══ THE COLOURS OF THE DAY ════════════════════════════════════ */
+
+.scene--palette { background: var(--ivory); }
+
+.palette-intro { margin-top: clamp(.9rem, 2.4vh, 1.4rem); }
+
+.palette-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.4rem, 4.5vw, 2.6rem);
+  margin-top: clamp(1.8rem, 5vh, 2.6rem);
+  list-style: none;
+  padding: 0;
+}
+.palette-swatches li { display: grid; justify-items: center; gap: .7rem; }
+.swatch {
+  width: clamp(3.6rem, 8.5vw, 4.6rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, .08),
+    inset 0 0 0 3px var(--paper-raised),
+    inset 0 0 0 4px color-mix(in srgb, var(--champagne) 40%, transparent),
+    0 8px 18px -8px color-mix(in srgb, var(--night-deep) 34%, transparent);
+}
+.swatch-name {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .58rem;
+  color: var(--ink-soft);
+}
+
+.dresscode {
+  display: grid;
+  justify-items: center;
+  gap: .7rem;
+  margin-top: clamp(2.2rem, 6vh, 3.2rem);
+}
+.dresscode-orn { width: min(300px, 70%); height: auto; opacity: .9; }
+.dresscode-label { color: var(--champagne-soft); }
+.dresscode-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3.4vw, 1.6rem);
+  color: var(--ink);
+  letter-spacing: .04em;
+}
+.dresscode-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .92rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+/* ═══ THE STRING OF MOMENTS ═════════════════════════════════════ */
+
+.scene--itinerary {
+  background:
+    radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--emerald-soft, #1B7A5F) 20%, transparent) 0%, transparent 60%),
+    var(--night);
+  color: var(--night-ink);
+}
+
+.day-words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.2rem, 4.5vw, 2.6rem);
+  margin-top: clamp(1.8rem, 5vh, 2.8rem);
+  list-style: none;
+  padding: 0;
+}
+.day-word { display: grid; justify-items: center; gap: .55rem; }
+.day-word__bulb { width: 30px; height: 30px; color: var(--champagne); opacity: .9; }
+.day-word__text {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  color: var(--gilding);
+}
+
+/* ═══ THE VENUE ═════════════════════════════════════════════════ */
+
+.scene--venue { background: var(--ivory); }
+
+.venue-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5.4vw, 3rem);
+  color: var(--ink);
+  letter-spacing: .05em;
+}
+
+.venue-stage {
+  position: relative;
+  width: min(100%, 640px);
+  margin-top: clamp(1.8rem, 5vh, 2.6rem);
+  display: grid;
+  justify-items: center;
+}
+
+.venue-arch {
+  position: relative;
+  width: min(100%, 440px);
+  display: grid;
+  place-items: center;
+}
+.venue-arch::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 1152 / 864;
+  background:
+    radial-gradient(46% 34% at 50% 58%, color-mix(in srgb, var(--champagne) 16%, transparent) 0%, transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--night) 88%, black) 0%, var(--night) 100%);
+  border-radius: 4px;
+  box-shadow: var(--shadow-lift);
+}
+.venue-arch__medallion {
+  position: absolute;
+  width: 34%;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, .45));
+}
+
+.venue-lantern {
+  position: absolute;
+  top: -1rem;
+  width: clamp(3.4rem, 7vw, 4.8rem);
+  z-index: 1;
+  filter: drop-shadow(0 10px 18px color-mix(in srgb, var(--night-deep) 36%, transparent));
+  transform-origin: 50% 0;
+  animation: lantern-sway 8s ease-in-out infinite alternate;
+}
+.venue-lantern--l { left: 8%; }
+.venue-lantern--r { right: 8%; animation-delay: -3.4s; }
+
+.venue-description { margin-top: clamp(1.8rem, 4.5vh, 2.4rem); }
+
+.venue-sublines { display: grid; gap: .7rem; }
+.venue-sublines .sub {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--ink-soft);
+}
+.venue-sublines .sub .label-caps { color: var(--burgundy); margin-right: .4rem; }
+.venue-sublines .sub em { font-style: italic; }
+
+.venue-address {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  color: var(--ink-soft);
+}
+.venue-address .icon {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: var(--champagne-soft);
+  stroke-width: 1.6;
+}
+
+.venue-actions { margin-top: clamp(1rem, 3vh, 1.6rem); }
+
+/* ═══ THE COUNTDOWN ═════════════════════════════════════════════ */
+
+.scene--countdown {
+  background:
+    radial-gradient(100% 70% at 50% 110%, color-mix(in srgb, var(--champagne) 8%, transparent) 0%, transparent 55%),
+    linear-gradient(180deg, var(--night-deep) 0%, var(--night) 100%);
+  overflow: hidden;
+}
+
+.countdown-shamsa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(80%, 560px);
+  opacity: .09;
+  pointer-events: none;
+  user-select: none;
+}
+
+.scene--countdown .scene-body { position: relative; z-index: 1; }
+
+.count-script {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5vw, 2.9rem);
+  line-height: 1.25;
+  color: var(--parchment);
+  max-width: 24ch;
+}
+.count-script em {
+  font-family: var(--font-script);
+  font-style: normal;
+  font-size: 1.06em;
+  color: var(--gilding);
+}
+
+.count-clock {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2.6rem);
+  margin-top: clamp(1.8rem, 5vh, 2.6rem);
+}
+.count-unit { display: grid; justify-items: center; gap: .4rem; min-width: 3.6rem; }
+.count-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 6vw, 3.1rem);
+  line-height: 1;
+  color: var(--gilding);
+  font-variant-numeric: tabular-nums;
+}
+.count-label { color: var(--night-faint); font-size: .58rem; }
+
+.count-summary {
+  margin-top: clamp(1.4rem, 4vh, 2rem);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--night-ink);
+}
+.count-message {
+  margin-top: 1rem;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--gilding-soft);
+}
+.count-date {
+  margin-top: clamp(1.4rem, 4vh, 2rem);
+  color: var(--night-faint);
+  letter-spacing: .18em;
+  line-height: 2;
+}
+.count-date__zone { color: var(--gilding-soft); }
+
+/* ═══ KINDLY RESPOND — RSVP ═════════════════════════════════════ */
+
+.scene--rsvp {
+  background: var(--ivory);
+  overflow: hidden;
+}
+
+.watermark-script {
+  position: absolute;
+  right: -1rem;
+  bottom: 2%;
+  font-family: var(--font-arabic-disp);
+  font-size: clamp(6rem, 20vw, 13rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--champagne) 10%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.scene--rsvp .scene-body { position: relative; z-index: 1; }
+
+.rsvp-card {
+  width: min(100%, 560px);
+  padding: clamp(2rem, 6vw, 3.2rem) clamp(1.4rem, 5vw, 3rem);
+  background: var(--paper-raised);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 30%, transparent),
+    inset 0 0 0 8px var(--paper-raised),
+    inset 0 0 0 9px color-mix(in srgb, var(--champagne) 18%, transparent),
+    var(--shadow-lift);
+  text-align: center;
+}
+
+.rsvp-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  color: var(--ink);
+  letter-spacing: .04em;
+  margin-top: .9rem;
+}
+
+.rsvp-deadline {
+  margin-top: .7rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--ink-soft);
+}
+
+.rsvp-ornament { max-width: 340px; margin: 1.4rem auto 0; }
+.rsvp-ornament__img { width: 100%; height: auto; display: block; }
+
+/* ═══ A CLOSING DUA ═════════════════════════════════════════════ */
+
+.scene--closing {
+  overflow: hidden;
+  background:
+    radial-gradient(110% 70% at 50% 0%, color-mix(in srgb, var(--emerald-soft, #1B7A5F) 22%, transparent) 0%, transparent 55%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
+}
+
+/* the golden dome glowing above the last words */
+.closing-plate {
+  position: relative;
+  z-index: 1;
+  width: min(300px, 64%);
+  margin: 0 auto clamp(24px, 4vh, 38px);
+  pointer-events: none;
+}
+.closing-plate::before {
+  content: "";
+  position: absolute;
+  inset: -18% -30%;
+  background: radial-gradient(50% 46% at 50% 58%,
+    color-mix(in srgb, var(--champagne) 20%, transparent) 0%,
+    color-mix(in srgb, var(--champagne) 8%, transparent) 44%,
+    transparent 72%);
+  z-index: -1;
+}
+.closing-plate__art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 100 / 118;
+  object-fit: cover;
+  object-position: 50% 22%;
+  /* the dome in an arched marble window */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='%23fff' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='%23fff' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+/* the gold rim around the arched window */
+.closing-plate::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(172deg, var(--gold-bright) 0%, var(--champagne) 42%, var(--champagne-soft) 100%);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.2' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.2' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  pointer-events: none;
+}
+
+.closing-bloom--r {
+  position: absolute;
+  top: 5%;
+  right: -2%;
+  width: clamp(100px, 14vw, 170px);
+  transform: scaleX(-1);
+  opacity: .8;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, .5));
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+.closing-bloom--r.reveal { transform: scaleX(-1) translateY(22px); }
+.closing-bloom--r.reveal.in-view,
+.no-js .closing-bloom--r.reveal { transform: scaleX(-1); }
+
+.scene--closing .scene-body { margin-top: 0; }
+
+.closing-script {
+  font-family: var(--font-hand);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--night-faint);
+}
+
+.closing-names {
+  margin-top: 8px;
+  font-size: clamp(2.8rem, 8vw, 4.6rem);
+  line-height: 1.15;
+  color: var(--gilding);
+  text-shadow: 0 2px 30px color-mix(in srgb, var(--champagne) 30%, transparent);
+}
+
+.closing-date {
+  margin-top: 14px;
+  color: var(--night-faint);
+  font-size: .64rem;
+  line-height: 1.8;
+}
+
+.closing-dua {
+  margin-top: clamp(1.6rem, 4.5vh, 2.4rem);
+  font-family: var(--font-arabic);
+  font-size: clamp(1.3rem, 3.6vw, 1.8rem);
+  line-height: 1.95;
+  color: var(--gilding);
+}
+
+.closing-dua-translation {
+  margin-top: .8rem;
+  color: var(--night-faint);
+  letter-spacing: .18em;
+  line-height: 2;
+  max-width: 60ch;
+}
+
+.closing-message {
+  margin: clamp(1.6rem, 4.5vh, 2.2rem) auto 0;
+  max-width: 50ch;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.9;
+  color: var(--night-ink);
+}
+
+.closing-seal {
+  position: relative;
+  width: clamp(4.6rem, 13vw, 5.6rem);
+  aspect-ratio: 1;
+  margin: clamp(28px, 5vh, 44px) auto 0;
+  display: grid;
+  place-items: center;
+}
+
+.closing-actions {
+  margin-top: clamp(26px, 5vh, 40px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.closing-actions .btn { color: var(--sunset-soft); }
+
+/* ═══ THE FOOTER — the garden gate plaque ═══════════════════════ */
+
+.footer {
+  position: relative;
+  padding: clamp(38px, 7vh, 60px) var(--scene-pad-x) clamp(30px, 5vh, 44px);
+  background: var(--night-deep);
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+.footer-ornament { width: min(420px, 84%); height: auto; display: block; opacity: .95; }
+.footer .small { color: var(--night-faint); }
+.footer-credit a {
+  color: var(--champagne-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-faint);
+  transition: color .25s ease, border-color .25s ease;
+}
+.footer-credit a:hover { color: var(--gilding); }
+
+/* ═══ shared geometry for the fine line-art ═════════════════════ */
+
+.countdown-shamsa, .ayat-arch, .noor-stage__shamsa { height: auto; }
+.std-emblem, .dresscode-orn, .closing-bloom--r, .closing-plate__art,
+.footer-ornament, .noor-orn, .story-corner, .event__star { height: auto; }
+.envelope-lace { height: auto; }

@@ -1,0 +1,48 @@
+/* ═══════════════════════════════════════════════════════════════
+   NOOR · responsive.css — the darbar at every size
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .noor-stage__lantern--l { left: -0.4rem; }
+  .noor-stage__lantern--r { right: -0.4rem; }
+}
+
+@media (max-width: 760px) {
+  .closing-plate { width: min(260px, 70%); }
+  .closing-bloom--r { width: clamp(84px, 22vw, 130px); top: 3%; }
+  .events::before { left: 1.7rem; transform: none; }
+
+  /* stack the timeline: card always to the right of the node */
+  .event {
+    grid-template-columns: minmax(3.4rem, auto) 1fr;
+    justify-items: start;
+  }
+  .event__node { grid-column: 1; grid-row: 1; }
+  .event:nth-child(odd) .event__card,
+  .event:nth-child(even) .event__card { grid-column: 2; grid-row: 1; text-align: left; }
+  .event__card { text-align: left; }
+
+  .arch-card { width: min(100%, 420px); }
+  .arch-card__inner { padding-inline: clamp(1.2rem, 12%, 2.6rem); }
+}
+
+@media (max-width: 560px) {
+  .arch-card__name { font-size: clamp(2.1rem, 8vw, 2.6rem); }
+  .arch-card__bismillah { font-size: .95rem; }
+  .arch-card__venue-address { font-size: .58rem; }
+  .moon-card__name { font-size: clamp(2.1rem, 8vw, 2.6rem); }
+  .opening__florals { width: clamp(8rem, 30vw, 12rem); }
+  .opening__lantern--l { left: .2rem; }
+  .opening__lantern--r { right: .2rem; }
+  .noor-stage__lantern { width: clamp(3.6rem, 12vw, 5rem); }
+  .noor-stage__lantern--l { left: .1rem; }
+  .noor-stage__lantern--r { right: .1rem; }
+  .noor-orn--swag-bl, .noor-orn--swag-br { display: none; }
+  .arch-card__names { font-size: inherit; }
+  .story-corner { width: clamp(6rem, 24vw, 9rem); }
+  .count-clock { flex-wrap: wrap; gap: 1.1rem 1.6rem; }
+  .count-unit { min-width: 4.4rem; }
+  .watermark-script { font-size: clamp(5rem, 26vw, 9rem); right: -.6rem; }
+  .std-actions .btn { width: min(280px, 82vw); }
+  .day-words { gap: 1rem 1.6rem; }
+}
