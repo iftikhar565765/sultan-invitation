@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   NOOR · sections.css — the emerald darbar walk
+   SULTAN · the imperial court
    ---------------------------------------------------------------
    One voice: pearl ivory paper, deep emerald silk bands, antique
    gold hairlines, Amiri for the Quranic voice, Pinyon for the
@@ -659,7 +659,16 @@
     inset 0 0 0 5px color-mix(in srgb, var(--champagne) 14%, transparent),
     0 8px 20px color-mix(in srgb, var(--night-deep) 22%, transparent);
 }
-.event__star { width: 62%; height: auto; }
+/* the timeline spine — hand-inked roman numerals instead of a
+   cropped ornament (the old divider crop read as random gold) */
+.event__numeral {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  letter-spacing: .08em;
+  color: color-mix(in srgb, var(--champagne-soft) 78%, var(--ink));
+  line-height: 1;
+}
 
 .event__card {
   padding: clamp(1.1rem, 3.4vw, 1.6rem) clamp(1.1rem, 3.4vw, 1.7rem);
