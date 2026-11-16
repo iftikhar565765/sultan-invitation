@@ -1,21 +1,24 @@
 /* ═══════════════════════════════════════════════════════════════
    SULTAN · theme.css — the imperial court skin
    ---------------------------------------------------------------
-   The page is polished onyx lit by candlelight; the invitation
-   rises as ivory letters framed in matte antique gold. This file
-   re-skins every scene on top of the shared base CSS: cinematic
-   grain, letterbox opening, gold dust, light sweeps, and the
-   sultan typography voices.
+   The page is one continuous polished-onyx night. This file adds
+   the cinematic layer: marble ground, film grain, letterbox
+   opening, gold dust, candlelight vignettes and the imperial
+   typography voices. Section structure lives in sections.css.
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── 1 · the onyx world ───────────────────────────────────────── */
 
+/* the whole suite is one continuous midnight — the sheet itself
+   must never paint over the court ground */
+.sheet { background: transparent; }
+
 body {
   background:
     linear-gradient(180deg,
-      color-mix(in srgb, var(--night-deep) 84%, transparent) 0%,
-      color-mix(in srgb, var(--night-deep) 92%, transparent) 100%),
-    url("assets/art/marble-onyx.jpg") center / cover no-repeat fixed,
+      color-mix(in srgb, var(--night-deep) 82%, transparent) 0%,
+      color-mix(in srgb, var(--night-deep) 94%, transparent) 100%),
+    url("../assets/art/marble-onyx.jpg") center / cover no-repeat fixed,
     var(--night-deep);
 }
 
@@ -79,7 +82,7 @@ body {
   background:
     radial-gradient(120% 62% at 50% 0%, color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 56%),
     radial-gradient(76% 42% at 50% 100%, color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 62%),
-    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 72%);
+    linear-gradient(180deg, color-mix(in srgb, var(--night) 88%, transparent) 0%, transparent 72%);
 }
 
 /* candlelight vignette around the whole stage */
@@ -88,7 +91,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(118% 88% at 50% 42%, transparent 52%, color-mix(in srgb, #000 42%, transparent) 100%);
+  background: radial-gradient(118% 88% at 50% 42%, transparent 52%, color-mix(in srgb, #000 46%, transparent) 100%);
 }
 
 /* gold dust drifting through the beam */
@@ -110,32 +113,8 @@ body {
   100% { opacity: 0; transform: translate3d(var(--dust-x, 12px), -108vh, 0) scale(1.15); }
 }
 
-/* the shamsa lattice reads as gilded light behind the arch */
-.noor-stage__shamsa { opacity: .16; filter: drop-shadow(0 0 26px color-mix(in srgb, var(--champagne) 22%, transparent)); }
-
-/* the arch itself glows from within the court */
-.arch-card__frame { filter: drop-shadow(0 30px 60px color-mix(in srgb, #000 55%, transparent)); }
-
-/* the interior of the arch is an ivory letter raised on the onyx stage */
-.arch-card__inner {
-  left: 19.5%;
-  right: 19.5%;
-  top: 31.5%;
-  bottom: 6%;
-  background:
-    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 42%),
-    linear-gradient(180deg,
-      var(--paper-raised) 0%,
-      var(--ivory) 46%,
-      color-mix(in srgb, var(--parchment) 82%, var(--ivory) 18%) 100%);
-  border-radius: 10px;
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
-    inset 0 0 46px color-mix(in srgb, var(--champagne) 12%, transparent),
-    0 26px 60px -24px color-mix(in srgb, #000 62%, transparent);
-  justify-content: center;
-  padding-inline: clamp(1rem, 3.4vw, 1.8rem);
-}
+/* the arch glows from within the court */
+.arch-card__frame { filter: drop-shadow(0 30px 60px color-mix(in srgb, #000 58%, transparent)); }
 
 /* drifting gold motes — candlelight pollen */
 .noor-stage__mote {
@@ -143,43 +122,7 @@ body {
   box-shadow: 0 0 8px color-mix(in srgb, var(--champagne) 55%, transparent);
 }
 
-/* ── 4 · scene rhythm — ivory letters between onyx seams ──────── */
-
-.scene--story,
-.scene--details,
-.scene--palette,
-.scene--std,
-.scene--venue,
-.scene--rsvp {
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--ivory) 96%, var(--champagne) 4%) 0%,
-      var(--ivory) 9%,
-      var(--ivory) 91%,
-      color-mix(in srgb, var(--parchment) 88%, var(--ivory) 12%) 100%);
-  border-block: 14px solid var(--night-deep);
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, var(--champagne) 34%, transparent),
-    inset 0 -1px 0 color-mix(in srgb, var(--champagne) 34%, transparent),
-    0 26px 70px -30px color-mix(in srgb, #000 72%, transparent);
-}
-
-/* dark bands — the ayat, countdown and closing stay court-dark */
-.scene--ayat,
-.scene--countdown,
-.scene--closing {
-  background:
-    radial-gradient(110% 82% at 50% 0%, color-mix(in srgb, var(--champagne) 10%, transparent) 0%, transparent 58%),
-    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 80%);
-}
-
-.scene--itinerary {
-  background:
-    radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--champagne) 8%, transparent) 0%, transparent 60%),
-    linear-gradient(180deg, var(--night-deep) 0%, var(--night) 62%);
-}
-
-/* ── 5 · the sultan typography ────────────────────────────────── */
+/* ── 4 · the imperial typography ──────────────────────────────── */
 
 .display,
 .arch-card__title,
@@ -206,30 +149,45 @@ body {
 .std-numerals,
 .envelope__letter-date { font-family: var(--font-display); letter-spacing: .1em; }
 
-/* on dark grounds gold text is safe; on ivory it is not */
-.scene--ayat .display,
-.scene--countdown .display,
-.scene--closing .display,
-.scene--itinerary .display { color: var(--gold-bright); }
-
-/* ── 6 · contrast law — gold never reads body on ivory ────────── */
+/* ── 5 · contrast law — the ground decides the ink ──────────────
+   Ivory letter panels (story / std / palette / rsvp card) carry
+   dark ink; the onyx chambers (ayat / details / venue / itinerary /
+   countdown / closing) carry ivory and gold. */
 
 .scene--story .prose,
-.scene--details .prose,
 .scene--palette .prose,
-.scene--venue .prose,
 .scene--rsvp .prose,
 .scene--std .prose { color: var(--ink); }
 
 .scene--story .ink-soft,
-.scene--details .ink-soft,
 .scene--palette .ink-soft,
-.scene--venue .ink-soft,
 .scene--rsvp .ink-soft,
-.scene--std .ink-soft,
-.particulars .prose { color: var(--ink-soft); }
+.scene--std .ink-soft { color: var(--ink-soft); }
 
-/* ── 7 · motion — filmic reveals ──────────────────────────────── */
+/* kickers: deep gold on paper, bright gold on the night */
+.scene--story .kicker,
+.scene--std .kicker,
+.scene--palette .kicker { color: var(--gold-ink); }
+.scene--story .kicker::before, .scene--story .kicker::after,
+.scene--std .kicker::before, .scene--std .kicker::after,
+.scene--palette .kicker::before, .scene--palette .kicker::after { border-color: var(--gold-line); }
+
+.scene--ayat .kicker,
+.scene--details .kicker,
+.scene--venue .kicker,
+.scene--itinerary .kicker,
+.scene--countdown .kicker,
+.scene--closing .kicker { color: var(--champagne); }
+
+/* dark chambers: ivory headings, bright gold echoes */
+.scene--details .display,
+.scene--venue .display { color: var(--parchment); }
+.scene--details .display .script,
+.scene--venue .display .script { color: var(--gold-bright); }
+.scene--details .prose,
+.scene--venue .prose { color: var(--night-ink); }
+
+/* ── 6 · motion — filmic reveals ──────────────────────────────── */
 
 .reveal {
   transition:
@@ -260,9 +218,9 @@ body {
   50% { background-position: 88% 0; }
 }
 
-/* the mini ayat — a small Amiri plate under the story */
+/* the mini ayat — a small Amiri plate inside the story letter */
 .mini-ayat {
-  margin: clamp(1.6rem, 4vh, 2.4rem) auto 0;
+  margin: clamp(1.5rem, 3.8vh, 2.2rem) auto 0;
   max-width: 34rem;
   padding: clamp(1.1rem, 3vh, 1.6rem) clamp(1.2rem, 3.4vw, 1.9rem);
   background:
@@ -314,29 +272,13 @@ body {
   color: var(--gold-bright);
   background: transparent;
 }
-
-/* ── 8 · details — the court's hardware ───────────────────────── */
-
-/* event cards: onyx plaques with gold numerals */
-.scene--details .event-card,
-.event {
-  border: 1px solid color-mix(in srgb, var(--champagne) 30%, transparent);
-  box-shadow: var(--shadow-soft);
+.btn--goldline {
+  border: 1px solid color-mix(in srgb, var(--champagne) 52%, transparent);
+  color: var(--gold-ink);
+  background: transparent;
 }
 
-/* the ayat plate is a gold-framed onyx panel */
-.ayat-plate {
-  border: 1px solid color-mix(in srgb, var(--champagne) 42%, transparent);
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 14%, transparent),
-    0 24px 70px -30px color-mix(in srgb, #000 70%, transparent);
-}
-
-/* palette swatches — framed like inlaid stones */
-.palette-swatch,
-.swatch {
-  border: 1px solid color-mix(in srgb, var(--champagne) 36%, transparent);
-}
+/* ── 7 · the court's hardware ─────────────────────────────────── */
 
 /* form fields on ivory paper keep ink contrast */
 .field input,
@@ -346,14 +288,7 @@ body {
   border-color: color-mix(in srgb, var(--champagne-soft) 44%, transparent);
 }
 
-/* footer — a last strip of onyx */
-.site-footer {
-  background: var(--night-deep);
-  border-top: 1px solid color-mix(in srgb, var(--champagne) 26%, transparent);
-}
-.site-footer, .site-footer a { color: var(--night-ink); }
-
-/* ── 9 · reduced motion & small screens ───────────────────────── */
+/* ── 8 · reduced motion & small screens ───────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
   .grain, .gold-dust i { animation: none; }

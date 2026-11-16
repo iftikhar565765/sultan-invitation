@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   SULTAN · the imperial court
+   SULTAN · the imperial court — responsive
    ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
@@ -8,41 +8,42 @@
 }
 
 @media (max-width: 760px) {
-  .closing-plate { width: min(260px, 70%); }
-  .closing-bloom--r { width: clamp(84px, 22vw, 130px); top: 3%; }
-  .events::before { left: 1.7rem; transform: none; }
+  .closing-plate { width: min(260px, 72%); }
+  .closing-bloom--r { width: clamp(90px, 22vw, 140px); top: 3%; }
 
-  /* stack the timeline: card always to the right of the node */
-  .event {
-    grid-template-columns: minmax(3.4rem, auto) 1fr;
-    justify-items: start;
+  /* the story letter fills its chamber */
+  .scene--story .scene-body,
+  .scene--std .scene-body,
+  .scene--palette .scene-body {
+    padding-inline: clamp(1.2rem, 6vw, 2.6rem);
   }
-  .event__node { grid-column: 1; grid-row: 1; }
-  .event:nth-child(odd) .event__card,
-  .event:nth-child(even) .event__card { grid-column: 2; grid-row: 1; text-align: left; }
-  .event__card { text-align: left; }
+  .story-corner { width: clamp(4.6rem, 20vw, 7rem); opacity: .75; }
+  .story-corner--tl { top: 1.4rem; left: .4rem; }
+  .story-corner--br { bottom: 1.4rem; right: .4rem; }
 
   .arch-card { width: min(100%, 420px); }
-  .arch-card__inner { padding-inline: clamp(1.2rem, 12%, 2.6rem); }
+  .arch-card__inner { left: 24%; right: 24%; top: 29%; bottom: 12%; padding-inline: 7%; }
 }
 
 @media (max-width: 560px) {
-  .arch-card__name { font-size: clamp(2.1rem, 8vw, 2.6rem); }
+  .arch-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
   .arch-card__bismillah { font-size: .95rem; }
-  .arch-card__venue-address { font-size: .58rem; }
-  .moon-card__name { font-size: clamp(2.1rem, 8vw, 2.6rem); }
+  .arch-card__venue-address { font-size: .56rem; }
+  .moon-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
   .opening__florals { width: clamp(8rem, 30vw, 12rem); }
   .opening__lantern--l { left: .2rem; }
   .opening__lantern--r { right: .2rem; }
-  .noor-stage__lantern { width: clamp(3.6rem, 12vw, 5rem); }
-  .noor-stage__lantern--l { left: .1rem; }
-  .noor-stage__lantern--r { right: .1rem; }
+  .noor-stage__lantern { width: clamp(3.6rem, 13vw, 5rem); top: -1.6rem; }
+  .noor-stage__lantern--l { left: -.2rem; }
+  .noor-stage__lantern--r { right: -.2rem; }
   .noor-orn--swag-bl, .noor-orn--swag-br { display: none; }
   .arch-card__names { font-size: inherit; }
-  .story-corner { width: clamp(6rem, 24vw, 9rem); }
   .count-clock { flex-wrap: wrap; gap: 1.1rem 1.6rem; }
   .count-unit { min-width: 4.4rem; }
   .watermark-script { font-size: clamp(5rem, 26vw, 9rem); right: -.6rem; }
   .std-actions .btn { width: min(280px, 82vw); }
   .day-words { gap: 1rem 1.6rem; }
+  .event__note { max-width: 100%; }
+  .noor-orn--roses-bl { left: -2.4rem; }
+  .noor-orn--roses-br { right: -2.4rem; }
 }

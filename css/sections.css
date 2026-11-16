@@ -1,13 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════
-   SULTAN · the imperial court
+   SULTAN · the imperial court — sections
    ---------------------------------------------------------------
-   One voice: pearl ivory paper, deep emerald silk bands, antique
-   gold hairlines, Amiri for the Quranic voice, Pinyon for the
-   names. Decorations are soft transparent art PNGs; the only
-   inline SVG is fine line-work (captions, icons, stars).
+   One continuous midnight: the whole page is polished onyx lit by
+   candlelight, and every section is a chamber of the same court.
+   Words rise as ivory letters framed in hairline gold; glow art
+   (shamsa, lanterns, crescent, domes) reads as real light against
+   the dark. Nothing zigzags, nothing floats loose — the court is
+   composed, symmetrical and calm.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ═══ THE HERO — the mihrab niche ═══════════════════════════════ */
+/* ═══ SHARED SCENE RHYTHM ═══════════════════════════════════════ */
 
 .scene {
   position: relative;
@@ -18,10 +20,40 @@
   padding-top: clamp(3rem, 7vh, 5rem);
   padding-bottom: clamp(2.6rem, 6vh, 4.2rem);
   overflow: hidden;
-  background:
-    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 55%),
-    var(--ivory);
 }
+
+.scene-body {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 880px);
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+.scene-body--narrow { width: min(100%, 720px); }
+.scene-body > * + * { margin-top: clamp(1rem, 2.6vh, 1.5rem); }
+.scene-body > .display + .prose { margin-top: clamp(1.3rem, 3vh, 1.9rem); }
+
+.kicker { text-align: center; }
+.kicker--light { color: var(--gilding-soft); }
+.kicker--ink { color: var(--gold-ink); }
+
+.prose { max-width: 62ch; }
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: .04em;
+}
+.display .script { font-style: normal; }
+
+/* ── an ivory letter panel — words of the court on raised paper ──
+   Used by the story, save-the-date and palette scenes. */
+.letter-panel {
+  padding: clamp(2.2rem, 6vw, 4rem) clamp(1.5rem, 5.5vw, 4.2rem);
+}
+
+/* ═══ THE HERO — the imperial stage ═════════════════════════════ */
 
 .noor-stage {
   position: relative;
@@ -31,50 +63,48 @@
   justify-items: center;
 }
 
-/* the shamsa lattice glowing behind everything */
+/* the shamsa blazes behind the arch — a real light source */
 .noor-stage__shamsa {
   position: absolute;
-  top: 42%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(120%, 980px);
-  opacity: .14;
+  width: min(118%, 940px);
+  opacity: .5;
   z-index: 0;
   pointer-events: none;
   user-select: none;
 }
 
-/* hanging fanous lanterns at the shoulders */
+/* hanging fanous lanterns at the shoulders — living light */
 .noor-stage__lantern {
   position: absolute;
-  top: -1.6rem;
-  width: clamp(4.6rem, 9vw, 7.2rem);
+  top: -2.4rem;
+  width: clamp(4.8rem, 9vw, 7.4rem);
   z-index: 1;
   pointer-events: none;
   user-select: none;
-  filter: drop-shadow(0 14px 24px color-mix(in srgb, var(--night-deep) 34%, transparent));
   transform-origin: 50% 0;
-  animation: lantern-sway 7s ease-in-out infinite alternate;
+  animation: lantern-sway 9s ease-in-out infinite alternate;
 }
-.noor-stage__lantern--l { left: clamp(-1rem, -2vw, 4rem); }
-.noor-stage__lantern--r { right: clamp(-1rem, -2vw, 4rem); animation-delay: -2.6s; }
+.noor-stage__lantern--l { left: clamp(0rem, 4vw, 5rem); }
+.noor-stage__lantern--r { right: clamp(0rem, 4vw, 5rem); animation-delay: -3.2s; }
 @keyframes lantern-sway {
-  from { rotate: -2.4deg; }
-  to   { rotate: 2.4deg; }
+  from { rotate: -2.2deg; }
+  to   { rotate: 2.2deg; }
 }
 
 /* a small crescent-and-star ornament above the arch */
 .noor-stage__crescent {
   position: relative;
   z-index: 1;
-  width: clamp(3.4rem, 7vw, 5rem);
-  margin-bottom: clamp(.4rem, 1.4vh, 1rem);
-  opacity: .92;
+  width: clamp(3.2rem, 6.4vw, 4.6rem);
+  margin-bottom: clamp(.3rem, 1.2vh, .8rem);
   pointer-events: none;
   user-select: none;
 }
 
-/* drifting lantern-light motes */
+/* drifting candlelight motes */
 .noor-stage__mote {
   position: absolute;
   z-index: 0;
@@ -95,13 +125,13 @@
   to   { transform: translateY(-26px); opacity: var(--o); }
 }
 
-/* ── the arch card — one tall mihrab niche holding the invitation ── */
+/* ── the arch card — the mihrab niche holding the invitation ──── */
 
 .arch-card {
   position: relative;
   z-index: 2;
   width: min(100%, 500px);
-  aspect-ratio: 827 / 1134;
+  aspect-ratio: 3 / 4;
 }
 
 .arch-card__frame {
@@ -112,51 +142,50 @@
   object-fit: fill;
   pointer-events: none;
   user-select: none;
-  filter: drop-shadow(0 24px 48px color-mix(in srgb, var(--night-deep) 30%, transparent));
+  filter: drop-shadow(0 26px 54px color-mix(in srgb, #000 62%, transparent));
   z-index: 0;
 }
 
-/* the letter resting inside the marble niche */
+/* the ivory letter resting inside the golden niche */
 .arch-card__inner {
   position: absolute;
-  left: 11.5%;
-  right: 11.5%;
-  top: 15.5%;
-  bottom: 2.5%;
+  left: 26%;
+  right: 26%;
+  top: 30%;
+  bottom: 13%;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6% 8%;
-  background:
-    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 55%),
-    color-mix(in srgb, var(--paper-raised) 96%, transparent);
-  border-radius: 999px 999px 6px 6px;
+  padding: 8% 7%;
+  background: linear-gradient(180deg,
+    var(--paper-raised) 0%,
+    var(--ivory) 52%,
+    color-mix(in srgb, var(--parchment) 78%, var(--ivory) 22%) 100%);
+  border-radius: 3px;
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
-    inset 0 0 0 5px color-mix(in srgb, var(--paper-raised) 90%, transparent),
-    inset 0 0 0 6px color-mix(in srgb, var(--champagne) 22%, transparent),
-    0 18px 44px -18px color-mix(in srgb, var(--night-deep) 38%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 42%, transparent),
+    inset 0 0 42px color-mix(in srgb, var(--champagne) 10%, transparent),
+    0 22px 52px -22px color-mix(in srgb, #000 66%, transparent);
 }
 .arch-card__inner > * { max-width: 100%; }
-.arch-card__inner > * + * { margin-top: clamp(.45rem, 1.6vh, .9rem); }
+.arch-card__inner > * + * { margin-top: clamp(.4rem, 1.5vh, .85rem); }
 
 .arch-card__bismillah {
   font-family: var(--font-arabic);
-  font-size: clamp(1.05rem, 3.2vw, 1.35rem);
+  font-size: clamp(1rem, 3vw, 1.25rem);
   line-height: 1.7;
-  color: var(--burgundy);
+  color: var(--gold-ink);
   margin-bottom: 0;
 }
 
 .arch-card__blessing {
-  color: var(--champagne-soft);
+  color: var(--gold-ink);
   letter-spacing: .2em;
-  font-size: clamp(.5rem, 1.4vw, .62rem);
+  font-size: clamp(.5rem, 1.4vw, .6rem);
   line-height: 2;
-  max-width: 100%;
 }
 
 .arch-card__invite {
@@ -165,10 +194,9 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: .18em;
-  font-size: clamp(.52rem, 1.6vw, .64rem);
+  font-size: clamp(.5rem, 1.5vw, .62rem);
   line-height: 2;
   color: var(--ink-soft);
-  max-width: 100%;
 }
 
 .arch-card__names {
@@ -183,23 +211,17 @@
 .arch-card__name {
   font-family: var(--font-script);
   font-weight: 400;
-  font-size: clamp(2.5rem, 7.5vw, 3.7rem);
-  line-height: 1.04;
-  background: linear-gradient(168deg,
-    color-mix(in srgb, var(--burgundy) 78%, var(--emerald-glow, #1B7A5F) 22%) 12%,
-    var(--burgundy) 52%,
-    color-mix(in srgb, var(--champagne) 30%, var(--burgundy-deep) 70%) 94%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--champagne) 26%, transparent));
+  font-size: clamp(2.3rem, 7vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--wine);
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--champagne) 30%, transparent);
 }
 
 .arch-card__and {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  color: var(--champagne-soft);
+  font-size: clamp(.95rem, 2.8vw, 1.2rem);
+  color: var(--gold-ink);
   letter-spacing: .08em;
 }
 
@@ -211,33 +233,33 @@
 }
 .arch-card__rule i {
   display: block;
-  width: clamp(22px, 8%, 52px);
+  width: clamp(20px, 7%, 48px);
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--paper-line));
+  background: linear-gradient(90deg, transparent, var(--gold-line));
 }
 .arch-card__rule i:last-child { transform: scaleX(-1); }
-.arch-card__rule img { width: clamp(1.6rem, 5%, 2.1rem); height: auto; opacity: .9; }
+.arch-card__rule img { width: clamp(1.5rem, 5%, 2rem); height: auto; opacity: .9; }
 
 .arch-card__date { margin-top: 0; }
 .arch-card__date-week {
-  color: var(--champagne-soft);
+  color: var(--gold-ink);
   letter-spacing: .3em;
-  font-size: clamp(.56rem, 1.6vw, .68rem);
+  font-size: clamp(.54rem, 1.5vw, .64rem);
 }
 .arch-card__date-row {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: .9rem;
-  margin-top: .3rem;
+  gap: .85rem;
+  margin-top: .28rem;
 }
 .arch-card__date-side {
   color: var(--ink-soft);
-  font-size: clamp(.6rem, 1.8vw, .72rem);
+  font-size: clamp(.58rem, 1.7vw, .7rem);
 }
 .arch-card__date-num {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 5.6vw, 2.6rem);
+  font-size: clamp(1.7rem, 5.4vw, 2.4rem);
   line-height: 1;
   color: var(--burgundy);
   letter-spacing: .04em;
@@ -247,7 +269,7 @@
   margin-top: 0;
   color: var(--ink-soft);
   letter-spacing: .16em;
-  font-size: clamp(.52rem, 1.6vw, .64rem);
+  font-size: clamp(.5rem, 1.5vw, .62rem);
   line-height: 1.9;
   max-width: 100%;
 }
@@ -263,36 +285,30 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--champagne-soft);
-  font-size: clamp(.52rem, 1.5vw, .62rem);
+  color: var(--gold-ink);
+  font-size: clamp(.5rem, 1.4vw, .6rem);
 }
 .arch-card__venue-label i {
   display: block;
-  width: 26px;
+  width: 24px;
   height: 1px;
   background: var(--gold-line);
 }
 .arch-card__venue-name {
   font-family: var(--font-display);
-  font-size: clamp(.95rem, 2.8vw, 1.2rem);
+  font-size: clamp(.92rem, 2.6vw, 1.14rem);
   letter-spacing: .06em;
   color: var(--ink);
 }
 .arch-card__venue-address {
   font-family: var(--font-body);
-  font-size: clamp(.6rem, 1.7vw, .72rem);
+  font-size: clamp(.58rem, 1.6vw, .7rem);
   line-height: 1.5;
   color: var(--ink-soft);
   max-width: 26ch;
 }
 
-.arch-card__closing {
-  margin-top: 0;
-  font-size: clamp(1.1rem, 3.4vw, 1.4rem);
-  color: var(--champagne-soft);
-}
-
-/* the base — roses and jasmine, swags */
+/* the base — roses and jasmine anchored to the stage floor */
 .noor-orn {
   position: absolute;
   pointer-events: none;
@@ -301,37 +317,37 @@
 }
 .noor-orn--roses-bl,
 .noor-orn--roses-br {
-  bottom: -2.2rem;
-  width: clamp(7rem, 16vw, 12rem);
-  filter: drop-shadow(0 10px 22px color-mix(in srgb, var(--night-deep) 26%, transparent));
+  bottom: -1.4rem;
+  width: clamp(7.4rem, 16vw, 12.4rem);
+  filter: drop-shadow(0 12px 26px color-mix(in srgb, #000 40%, transparent));
 }
-.noor-orn--roses-bl { left: -1.6rem; transform: rotate(-6deg); }
-.noor-orn--roses-br { right: -1.6rem; transform: scaleX(-1) rotate(-6deg); }
+.noor-orn--roses-bl { left: -1rem; transform: rotate(-4deg); }
+.noor-orn--roses-br { right: -1rem; transform: scaleX(-1) rotate(-4deg); }
 .noor-orn--swag-bl,
 .noor-orn--swag-br {
-  bottom: 18%;
-  width: clamp(5.4rem, 12vw, 9rem);
-  opacity: .85;
+  bottom: 24%;
+  width: clamp(4.6rem, 10vw, 7.6rem);
+  opacity: .9;
 }
-.noor-orn--swag-bl { left: -2.2rem; transform: rotate(14deg); }
-.noor-orn--swag-br { right: -2.2rem; transform: scaleX(-1) rotate(14deg); }
+.noor-orn--swag-bl { left: 1.4rem; transform: rotate(10deg); }
+.noor-orn--swag-br { right: 1.4rem; transform: scaleX(-1) rotate(10deg); }
 
 /* the signboard line + scroll cue beneath the stage */
 .hero-signboard {
   position: relative;
   z-index: 2;
-  margin-top: clamp(2.6rem, 6vh, 4rem);
+  margin-top: clamp(2.4rem, 6vh, 3.6rem);
   display: grid;
   justify-items: center;
   gap: 1.2rem;
 }
-.hero-signboard__line { color: var(--champagne-soft); }
+.hero-signboard__line { color: var(--gilding-soft); }
 
 .hero-scroll {
   display: inline-flex;
   align-items: center;
   gap: .6rem;
-  color: var(--ink-soft);
+  color: var(--night-faint);
 }
 .hero-scroll__arrow {
   width: 15px;
@@ -343,70 +359,65 @@
   50% { transform: translateY(5px); opacity: 1; }
 }
 
-/* ═══ THE CHRONICLE — story ═════════════════════════════════════ */
+/* ═══ THE CHRONICLE — the story, an ivory letter on the court ═══ */
 
-.scene--story {
-  background: var(--ivory);
-  overflow: hidden;
+.scene--story { overflow: hidden; }
+
+/* the letter itself */
+.scene--story .scene-body {
+  background:
+    linear-gradient(180deg,
+      var(--paper-raised) 0%,
+      var(--ivory) 10%,
+      var(--ivory) 90%,
+      color-mix(in srgb, var(--parchment) 82%, var(--ivory) 18%) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
+    inset 0 0 0 7px var(--paper-raised),
+    inset 0 0 0 8px color-mix(in srgb, var(--champagne) 24%, transparent),
+    0 30px 80px -34px color-mix(in srgb, #000 72%, transparent);
+  padding: clamp(2.4rem, 7vw, 4.6rem) clamp(1.6rem, 6vw, 4.6rem);
 }
 
 .story-corner {
   position: absolute;
-  width: clamp(8rem, 18vw, 14rem);
-  opacity: .8;
+  width: clamp(6.4rem, 13vw, 10rem);
+  opacity: .9;
   pointer-events: none;
   user-select: none;
+  z-index: 2;
 }
-.story-corner--tl { top: -1.8rem; left: -1.8rem; transform: rotate(-4deg); }
-.story-corner--br { bottom: -1.8rem; right: -1.8rem; transform: rotate(176deg); }
+.story-corner--tl { top: 2.6rem; left: max(1.4rem, calc(50% - 460px)); }
+.story-corner--br { bottom: 2.6rem; right: max(1.4rem, calc(50% - 460px)); transform: rotate(178deg); }
 
-.scene-body {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 880px);
-  margin-inline: auto;
-  display: grid;
-  justify-items: center;
-  text-align: center;
-}
-.scene-body--narrow { width: min(100%, 720px); }
-
-.scene-body > * + * { margin-top: clamp(1.1rem, 3vh, 1.7rem); }
-.scene-body > .display + .prose { margin-top: clamp(1.4rem, 3.4vh, 2rem); }
-
-.kicker { text-align: center; }
-.kicker--light { color: var(--gilding-soft); }
-.kicker--ink { color: var(--burgundy); }
-
-.prose { max-width: 62ch; }
 .prose--dropcap { text-align: left; }
 .prose--dropcap::first-letter {
   font-family: var(--font-display);
-  font-size: 3.1em;
-  line-height: .8;
+  font-size: 3em;
+  line-height: .82;
   float: left;
-  padding: .06em .14em 0 0;
+  padding: .05em .13em 0 0;
   color: var(--burgundy);
 }
 
 .story-quote {
   display: grid;
   justify-items: center;
-  gap: .9rem;
+  gap: .85rem;
   max-width: 46ch;
-  padding-top: clamp(.6rem, 2vh, 1.2rem);
+  padding-top: clamp(.5rem, 1.6vh, 1rem);
 }
 .story-quote__rule { width: min(220px, 60%); height: 16px; }
 .story-quote__text {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  font-size: clamp(1.18rem, 2.9vw, 1.5rem);
   line-height: 1.5;
   color: var(--burgundy);
 }
 .story-quote__label { color: var(--ink-soft); letter-spacing: .2em; line-height: 1.8; }
 
-.story-note { margin-top: clamp(1.4rem, 3.6vh, 2rem); }
+.story-note { margin-top: clamp(1.3rem, 3.4vh, 2rem); }
 .story-note-credit { display: block; font-size: .92em; opacity: .75; margin-top: .3rem; }
 
 .story-captions {
@@ -414,7 +425,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: clamp(1.2rem, 4vw, 2.6rem);
-  margin-top: clamp(1.6rem, 4vh, 2.4rem);
+  margin-top: clamp(1.5rem, 3.8vh, 2.2rem);
 }
 .story-caption {
   display: grid;
@@ -430,22 +441,22 @@
   color: var(--ink-soft);
 }
 
-/* ═══ THE BLESSED VERSE — 30:21 ═════════════════════════════════ */
+/* ═══ THE BLESSED VERSE — 30:21, gold upon the night ════════════ */
 
 .scene--ayat {
-  background:
-    radial-gradient(110% 90% at 50% 0%, color-mix(in srgb, var(--emerald-soft, #1B7A5F) 26%, transparent) 0%, transparent 58%),
-    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
   overflow: hidden;
+  background: radial-gradient(110% 86% at 50% 0%,
+    color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 56%),
+    transparent;
 }
 
 .ayat-arch {
   position: absolute;
-  top: -8rem;
+  top: -6rem;
   left: 50%;
   transform: translateX(-50%);
-  width: min(130%, 760px);
-  opacity: .1;
+  width: min(120%, 700px);
+  opacity: .16;
   pointer-events: none;
   user-select: none;
 }
@@ -457,19 +468,21 @@
   width: min(100%, 640px);
   padding: clamp(2.4rem, 7vw, 4.2rem) clamp(1.6rem, 6vw, 3.6rem);
   background:
-    radial-gradient(90% 70% at 50% 110%, color-mix(in srgb, var(--champagne) 10%, transparent) 0%, transparent 62%),
-    linear-gradient(180deg, color-mix(in srgb, var(--night-deep) 72%, black) 0%, var(--night-deep) 100%);
+    radial-gradient(90% 70% at 50% 110%,
+      color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--night-deep) 74%, black) 0%,
+      var(--night-deep) 100%);
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 34%, transparent),
-    inset 0 0 0 7px transparent,
-    inset 0 0 60px rgba(0, 0, 0, .38),
-    var(--shadow-lift);
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
+    inset 0 0 64px rgba(0, 0, 0, .42),
+    0 26px 70px -30px color-mix(in srgb, #000 74%, transparent);
 }
 
 .ayat-plate__corner {
   position: absolute;
-  width: clamp(3.6rem, 9vw, 5.6rem);
-  opacity: .85;
+  width: clamp(3.4rem, 8.6vw, 5.2rem);
+  opacity: .9;
   pointer-events: none;
 }
 .ayat-plate__corner--tl { top: -.9rem; left: -.9rem; }
@@ -511,64 +524,69 @@
   background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
 }
 
-/* ═══ SAVE THE DATE ═════════════════════════════════════════════ */
+/* ═══ SAVE THE DATE — a letter of the court ═════════════════════ */
 
-.scene--std {
-  position: relative;
-  background: var(--ivory);
-  overflow: hidden;
-}
+.scene--std { overflow: hidden; }
 
-.std-band {
-  position: absolute;
-  inset: 0;
+.scene-body--std {
   background:
-    radial-gradient(90% 60% at 50% 0%, color-mix(in srgb, var(--champagne) 9%, transparent) 0%, transparent 60%),
-    radial-gradient(120% 80% at 50% 110%, color-mix(in srgb, var(--olive) 12%, transparent) 0%, transparent 58%);
-  pointer-events: none;
+    linear-gradient(180deg,
+      var(--paper-raised) 0%,
+      var(--ivory) 10%,
+      var(--ivory) 90%,
+      color-mix(in srgb, var(--parchment) 82%, var(--ivory) 18%) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
+    inset 0 0 0 7px var(--paper-raised),
+    inset 0 0 0 8px color-mix(in srgb, var(--champagne) 24%, transparent),
+    0 30px 80px -34px color-mix(in srgb, #000 72%, transparent);
+  padding: clamp(2.2rem, 6.5vw, 4.2rem) clamp(1.6rem, 6vw, 4.2rem);
 }
 
-.scene-body--std { position: relative; z-index: 1; }
+.std-band { display: none; }
 
+/* the dome miniature — glowing art set into a dark onyx plaque,
+   like an enamelled miniature pinned to the letter */
 .std-emblem {
-  width: clamp(4.6rem, 11vw, 6.6rem);
-  aspect-ratio: 1;
-  object-fit: cover;
-  object-position: 50% 30%;
+  width: clamp(7rem, 15vw, 10rem);
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  padding: .55rem 1rem;
+  background:
+    radial-gradient(120% 120% at 50% 24%,
+      color-mix(in srgb, var(--champagne) 14%, var(--night)) 0%,
+      var(--night-deep) 68%);
   border-radius: 999px;
   box-shadow:
-    inset 0 0 0 3px var(--paper-raised),
-    inset 0 0 0 4px color-mix(in srgb, var(--champagne) 55%, transparent),
-    0 10px 24px color-mix(in srgb, var(--night-deep) 30%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 52%, transparent),
+    inset 0 0 0 4px color-mix(in srgb, var(--champagne) 10%, transparent),
+    0 12px 26px -10px color-mix(in srgb, #000 46%, transparent);
 }
 
 .std-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5.4vw, 3.1rem);
+  font-size: clamp(2rem, 5.4vw, 3rem);
   color: var(--ink);
   letter-spacing: .04em;
 }
 
-.std-crossing {
-  font-size: clamp(1.3rem, 3.4vw, 1.7rem);
-  color: var(--burgundy);
-}
+.std-crossing { font-size: clamp(1.25rem, 3.3vw, 1.62rem); color: var(--burgundy); }
 
 .std-numerals {
   font-family: var(--font-display);
   font-size: var(--fs-numerals);
   letter-spacing: .14em;
-  color: var(--champagne-soft);
+  color: var(--gold-ink);
 }
 
 .std-display {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: clamp(.95rem, 2.3vw, 1.1rem);
+  font-size: clamp(.92rem, 2.2vw, 1.06rem);
   color: var(--ink-soft);
 }
 
-.std-note { font-family: var(--font-body); font-size: .9rem; color: var(--ink-soft); }
+.std-note { font-family: var(--font-body); font-size: .88rem; color: var(--ink-soft); }
 
 .std-actions {
   display: flex;
@@ -580,9 +598,9 @@
 
 .std-seal {
   position: relative;
-  width: clamp(4.6rem, 12vw, 5.6rem);
+  width: clamp(4.4rem, 11vw, 5.4rem);
   aspect-ratio: 1;
-  margin-top: clamp(1.6rem, 4vh, 2.4rem);
+  margin-top: clamp(1.4rem, 3.6vh, 2.2rem);
   display: grid;
   place-items: center;
 }
@@ -592,155 +610,146 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 8px 18px color-mix(in srgb, var(--night-deep) 36%, transparent));
+  filter: drop-shadow(0 8px 18px color-mix(in srgb, #000 36%, transparent));
 }
 .std-seal .seal__initials,
 .closing-seal .seal__initials {
   position: relative;
   font-family: var(--font-display);
-  font-size: clamp(.68rem, 2vw, .82rem);
+  font-size: clamp(.66rem, 1.9vw, .8rem);
   letter-spacing: .12em;
   color: #4A380C;
   text-shadow: 0 0 5px rgba(253, 251, 243, .9);
 }
 
-/* ═══ THE CELEBRATIONS — event timeline ═════════════════════════ */
+/* ═══ THE CELEBRATIONS — the court programme ════════════════════ */
 
-.scene--details { background: var(--ivory); }
+.scene--details { overflow: hidden; }
 
 .details-intro { margin-top: clamp(.9rem, 2.4vh, 1.4rem); }
 
 .events {
   position: relative;
-  width: min(100%, 760px);
-  margin: clamp(2.2rem, 6vh, 3.4rem) auto 0;
+  width: min(100%, 660px);
+  margin: clamp(1.6rem, 4.5vh, 2.6rem) auto 0;
   display: grid;
-  gap: clamp(1.2rem, 3vh, 1.8rem);
   list-style: none;
   padding: 0;
 }
 
-/* the connecting thread */
-.events::before {
-  content: "";
-  position: absolute;
-  top: -1rem;
-  bottom: -1rem;
-  left: 50%;
-  width: 1px;
-  transform: translateX(-50%);
-  background: linear-gradient(180deg,
-    transparent, var(--gold-line) 12%, var(--gold-line) 88%, transparent);
-}
-
+/* the programme is a composed column — numerals above names,
+   fine gold hairlines between entries. No zigzag, no cards. */
 .event {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr minmax(3.4rem, auto) 1fr;
-  align-items: center;
-  gap: clamp(.8rem, 2.4vw, 1.6rem);
+  justify-items: center;
+  text-align: center;
+  padding: clamp(1.5rem, 3.6vh, 2.3rem) clamp(.4rem, 3vw, 2.4rem);
+}
+
+.event + .event::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(320px, 62%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-line) 22%, var(--gold-line) 78%, transparent);
 }
 
 .event__node {
-  grid-column: 2;
   display: grid;
   place-items: center;
-  width: clamp(3rem, 8vw, 3.8rem);
+  width: 2.9rem;
   aspect-ratio: 1;
   border-radius: 999px;
-  background: var(--paper-raised);
+  margin-bottom: 1rem;
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 44%, transparent),
-    0 6px 16px color-mix(in srgb, var(--night-deep) 16%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 62%, transparent),
+    inset 0 0 0 4px color-mix(in srgb, var(--champagne) 12%, transparent);
 }
-.event__node--prime {
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 70%, transparent),
-    inset 0 0 0 5px color-mix(in srgb, var(--champagne) 14%, transparent),
-    0 8px 20px color-mix(in srgb, var(--night-deep) 22%, transparent);
-}
-/* the timeline spine — hand-inked roman numerals instead of a
-   cropped ornament (the old divider crop read as random gold) */
 .event__numeral {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(1.05rem, 3vw, 1.3rem);
-  letter-spacing: .08em;
-  color: color-mix(in srgb, var(--champagne-soft) 78%, var(--ink));
+  font-size: 1.14rem;
+  letter-spacing: .06em;
+  color: var(--champagne);
   line-height: 1;
 }
-
-.event__card {
-  padding: clamp(1.1rem, 3.4vw, 1.6rem) clamp(1.1rem, 3.4vw, 1.7rem);
-  background: var(--paper-raised);
-  border-radius: 4px;
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 26%, transparent),
-    0 10px 26px -12px color-mix(in srgb, var(--night-deep) 30%, transparent);
-  text-align: center;
+.event__node--prime {
+  width: 3.6rem;
+  box-shadow: none;
+  overflow: visible;
 }
-.event:nth-child(odd) .event__card { grid-column: 1; grid-row: 1; }
-.event:nth-child(even) .event__card { grid-column: 3; grid-row: 1; }
-
-.event__card--prime {
-  background:
-    radial-gradient(120% 100% at 50% 0%, color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 55%),
-    var(--paper-raised);
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 58%, transparent),
-    0 16px 36px -14px color-mix(in srgb, var(--night-deep) 40%, transparent);
+.event__star {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--champagne) 55%, transparent));
 }
+
+.event__card { display: contents; }
 
 .event__index {
   display: block;
   font-family: var(--font-arabic);
-  font-size: 1.05rem;
-  color: var(--champagne-soft);
-  margin-bottom: .35rem;
+  font-size: 1.02rem;
+  color: var(--gilding-soft);
+  margin-bottom: .4rem;
 }
 
 .event__name {
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 3.2vw, 1.5rem);
-  letter-spacing: .05em;
-  color: var(--burgundy);
+  font-size: clamp(1.3rem, 3.6vw, 1.8rem);
+  letter-spacing: .06em;
+  color: var(--gold-bright);
 }
 
 .event__when {
-  margin-top: .45rem;
+  margin-top: .5rem;
   font-family: var(--font-ui);
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: .16em;
-  font-size: clamp(.56rem, 1.7vw, .68rem);
-  color: var(--champagne-soft);
+  letter-spacing: .18em;
+  font-size: clamp(.56rem, 1.6vw, .66rem);
+  color: var(--gilding-soft);
 }
 
 .event__note {
-  margin-top: .55rem;
+  margin-top: .65rem;
   font-family: var(--font-body);
-  font-size: clamp(.84rem, 2vw, .94rem);
-  line-height: 1.65;
-  color: var(--ink-soft);
+  font-size: clamp(.84rem, 2vw, .93rem);
+  line-height: 1.7;
+  color: var(--night-ink);
+  max-width: 46ch;
 }
 
-/* the particulars plate */
+/* the Nikah entry — the moment the whole court gathers */
+.event--prime .event__name {
+  font-size: clamp(1.7rem, 4.6vw, 2.4rem);
+  text-shadow: 0 2px 24px color-mix(in srgb, var(--champagne) 40%, transparent);
+}
+.event--prime .event__when { color: var(--gold-bright); }
+
+/* the particulars — a gold-framed plaque of the court */
 .particulars {
   width: min(100%, 760px);
-  margin: clamp(2.6rem, 7vh, 4rem) auto 0;
-  padding: clamp(1.6rem, 5vw, 2.6rem);
+  margin: clamp(2rem, 5.5vh, 3.2rem) auto 0;
+  padding: clamp(1.7rem, 5vw, 2.8rem);
   background:
-    radial-gradient(100% 80% at 50% 0%, color-mix(in srgb, var(--champagne) 8%, transparent) 0%, transparent 55%),
-    var(--paper-wash);
+    radial-gradient(100% 80% at 50% 0%,
+      color-mix(in srgb, var(--champagne) 9%, transparent) 0%, transparent 55%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--night-deep) 72%, black) 0%,
+      var(--night-deep) 100%);
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 34%, transparent),
-    inset 0 0 0 6px var(--paper-raised),
-    inset 0 0 0 7px color-mix(in srgb, var(--champagne) 22%, transparent),
-    var(--shadow-soft);
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 38%, transparent),
+    inset 0 0 54px rgba(0, 0, 0, .4),
+    0 26px 70px -30px color-mix(in srgb, #000 74%, transparent);
   text-align: center;
 }
 
-.particulars-eyebrow { color: var(--champagne-soft); }
+.particulars-eyebrow { color: var(--gilding-soft); }
 
 .particulars-row {
   display: grid;
@@ -750,11 +759,11 @@
 }
 
 .particular { display: grid; gap: .4rem; justify-items: center; }
-.particular-label { color: var(--champagne-soft); }
+.particular-label { color: var(--gilding-soft); }
 .particular-value {
   font-family: var(--font-display);
-  font-size: clamp(.98rem, 2.6vw, 1.15rem);
-  color: var(--ink);
+  font-size: clamp(.96rem, 2.5vw, 1.12rem);
+  color: var(--parchment);
   line-height: 1.5;
 }
 .particular-note {
@@ -762,13 +771,28 @@
   font-style: italic;
   font-size: .84rem;
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--night-ink);
   max-width: 30ch;
 }
 
-/* ═══ THE COLOURS OF THE DAY ════════════════════════════════════ */
+/* ═══ THE COLOURS OF THE COURT ══════════════════════════════════ */
 
-.scene--palette { background: var(--ivory); }
+.scene--palette { overflow: hidden; }
+
+.scene--palette .scene-body {
+  background:
+    linear-gradient(180deg,
+      var(--paper-raised) 0%,
+      var(--ivory) 10%,
+      var(--ivory) 90%,
+      color-mix(in srgb, var(--parchment) 82%, var(--ivory) 18%) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
+    inset 0 0 0 7px var(--paper-raised),
+    inset 0 0 0 8px color-mix(in srgb, var(--champagne) 24%, transparent),
+    0 30px 80px -34px color-mix(in srgb, #000 72%, transparent);
+  padding: clamp(2.2rem, 6.5vw, 4.2rem) clamp(1.6rem, 6vw, 4.2rem);
+}
 
 .palette-intro { margin-top: clamp(.9rem, 2.4vh, 1.4rem); }
 
@@ -790,14 +814,14 @@
     inset 0 0 0 1px rgba(0, 0, 0, .08),
     inset 0 0 0 3px var(--paper-raised),
     inset 0 0 0 4px color-mix(in srgb, var(--champagne) 40%, transparent),
-    0 8px 18px -8px color-mix(in srgb, var(--night-deep) 34%, transparent);
+    0 8px 18px -8px color-mix(in srgb, #000 40%, transparent);
 }
 .swatch-name {
   font-family: var(--font-ui);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .18em;
-  font-size: .58rem;
+  font-size: .56rem;
   color: var(--ink-soft);
 }
 
@@ -805,10 +829,10 @@
   display: grid;
   justify-items: center;
   gap: .7rem;
-  margin-top: clamp(2.2rem, 6vh, 3.2rem);
+  margin-top: clamp(2rem, 5.5vh, 3rem);
 }
 .dresscode-orn { width: min(300px, 70%); height: auto; opacity: .9; }
-.dresscode-label { color: var(--champagne-soft); }
+.dresscode-label { color: var(--gold-ink); }
 .dresscode-title {
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 3.4vw, 1.6rem);
@@ -827,10 +851,9 @@
 /* ═══ THE STRING OF MOMENTS ═════════════════════════════════════ */
 
 .scene--itinerary {
-  background:
-    radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--emerald-soft, #1B7A5F) 20%, transparent) 0%, transparent 60%),
-    var(--night);
-  color: var(--night-ink);
+  background: radial-gradient(110% 80% at 50% 0%,
+    color-mix(in srgb, var(--champagne) 6%, transparent) 0%, transparent 60%),
+    transparent;
 }
 
 .day-words {
@@ -851,14 +874,14 @@
   color: var(--gilding);
 }
 
-/* ═══ THE VENUE ═════════════════════════════════════════════════ */
+/* ═══ THE VENUE — the gate of the court ═════════════════════════ */
 
-.scene--venue { background: var(--ivory); }
+.scene--venue { overflow: hidden; }
 
 .venue-title {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 5.4vw, 3rem);
-  color: var(--ink);
+  font-size: clamp(1.9rem, 5.4vw, 2.9rem);
+  color: var(--gold-bright);
   letter-spacing: .05em;
 }
 
@@ -880,30 +903,29 @@
   content: "";
   display: block;
   width: 100%;
-  aspect-ratio: 1152 / 864;
+  aspect-ratio: 4 / 3;
   background:
-    radial-gradient(46% 34% at 50% 58%, color-mix(in srgb, var(--champagne) 16%, transparent) 0%, transparent 70%),
-    linear-gradient(180deg, color-mix(in srgb, var(--night) 88%, black) 0%, var(--night) 100%);
-  border-radius: 4px;
-  box-shadow: var(--shadow-lift);
+    radial-gradient(42% 40% at 50% 52%,
+      color-mix(in srgb, var(--champagne) 22%, transparent) 0%,
+      color-mix(in srgb, var(--champagne) 8%, transparent) 46%, transparent 72%);
+  border-radius: 999px 999px 8px 8px;
 }
 .venue-arch__medallion {
   position: absolute;
-  width: 34%;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, .45));
+  width: 40%;
+  filter: drop-shadow(0 8px 22px color-mix(in srgb, var(--champagne) 40%, transparent));
 }
 
 .venue-lantern {
   position: absolute;
-  top: -1rem;
-  width: clamp(3.4rem, 7vw, 4.8rem);
+  top: -1.4rem;
+  width: clamp(3.2rem, 6.6vw, 4.6rem);
   z-index: 1;
-  filter: drop-shadow(0 10px 18px color-mix(in srgb, var(--night-deep) 36%, transparent));
   transform-origin: 50% 0;
-  animation: lantern-sway 8s ease-in-out infinite alternate;
+  animation: lantern-sway 9s ease-in-out infinite alternate;
 }
-.venue-lantern--l { left: 8%; }
-.venue-lantern--r { right: 8%; animation-delay: -3.4s; }
+.venue-lantern--l { left: 10%; }
+.venue-lantern--r { right: 10%; animation-delay: -3.6s; }
 
 .venue-description { margin-top: clamp(1.8rem, 4.5vh, 2.4rem); }
 
@@ -911,9 +933,9 @@
 .venue-sublines .sub {
   font-family: var(--font-body);
   font-size: .95rem;
-  color: var(--ink-soft);
+  color: var(--night-ink);
 }
-.venue-sublines .sub .label-caps { color: var(--burgundy); margin-right: .4rem; }
+.venue-sublines .sub .label-caps { color: var(--gilding-soft); margin-right: .4rem; }
 .venue-sublines .sub em { font-style: italic; }
 
 .venue-address {
@@ -922,13 +944,13 @@
   gap: .55rem;
   font-family: var(--font-body);
   font-size: .9rem;
-  color: var(--ink-soft);
+  color: var(--night-ink);
 }
 .venue-address .icon {
   width: 15px;
   height: 15px;
   fill: none;
-  stroke: var(--champagne-soft);
+  stroke: var(--champagne);
   stroke-width: 1.6;
 }
 
@@ -937,10 +959,10 @@
 /* ═══ THE COUNTDOWN ═════════════════════════════════════════════ */
 
 .scene--countdown {
-  background:
-    radial-gradient(100% 70% at 50% 110%, color-mix(in srgb, var(--champagne) 8%, transparent) 0%, transparent 55%),
-    linear-gradient(180deg, var(--night-deep) 0%, var(--night) 100%);
   overflow: hidden;
+  background: radial-gradient(100% 70% at 50% 110%,
+    color-mix(in srgb, var(--champagne) 8%, transparent) 0%, transparent 55%),
+    transparent;
 }
 
 .countdown-shamsa {
@@ -948,8 +970,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(80%, 560px);
-  opacity: .09;
+  width: min(72%, 520px);
+  opacity: .22;
   pointer-events: none;
   user-select: none;
 }
@@ -982,7 +1004,7 @@
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 6vw, 3.1rem);
   line-height: 1;
-  color: var(--gilding);
+  color: var(--gold-bright);
   font-variant-numeric: tabular-nums;
 }
 .count-label { color: var(--night-faint); font-size: .58rem; }
@@ -1009,12 +1031,9 @@
 }
 .count-date__zone { color: var(--gilding-soft); }
 
-/* ═══ KINDLY RESPOND — RSVP ═════════════════════════════════════ */
+/* ═══ KINDLY RESPOND — an ivory reply card on the court ═════════ */
 
-.scene--rsvp {
-  background: var(--ivory);
-  overflow: hidden;
-}
+.scene--rsvp { overflow: hidden; }
 
 .watermark-script {
   position: absolute;
@@ -1023,7 +1042,7 @@
   font-family: var(--font-arabic-disp);
   font-size: clamp(6rem, 20vw, 13rem);
   line-height: 1;
-  color: color-mix(in srgb, var(--champagne) 10%, transparent);
+  color: color-mix(in srgb, var(--champagne) 9%, transparent);
   pointer-events: none;
   user-select: none;
 }
@@ -1033,12 +1052,13 @@
 .rsvp-card {
   width: min(100%, 560px);
   padding: clamp(2rem, 6vw, 3.2rem) clamp(1.4rem, 5vw, 3rem);
-  background: var(--paper-raised);
+  background:
+    linear-gradient(180deg, var(--paper-raised) 0%, var(--ivory) 60%, var(--parchment) 100%);
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 30%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 34%, transparent),
     inset 0 0 0 8px var(--paper-raised),
-    inset 0 0 0 9px color-mix(in srgb, var(--champagne) 18%, transparent),
-    var(--shadow-lift);
+    inset 0 0 0 9px color-mix(in srgb, var(--champagne) 20%, transparent),
+    0 30px 80px -32px color-mix(in srgb, #000 74%, transparent);
   text-align: center;
 }
 
@@ -1061,65 +1081,47 @@
 .rsvp-ornament { max-width: 340px; margin: 1.4rem auto 0; }
 .rsvp-ornament__img { width: 100%; height: auto; display: block; }
 
-/* ═══ A CLOSING DUA ═════════════════════════════════════════════ */
+/* ═══ A CLOSING DUA — beneath the glowing dome ══════════════════ */
 
 .scene--closing {
   overflow: hidden;
-  background:
-    radial-gradient(110% 70% at 50% 0%, color-mix(in srgb, var(--emerald-soft, #1B7A5F) 22%, transparent) 0%, transparent 55%),
-    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
+  background: radial-gradient(110% 70% at 50% 0%,
+    color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 55%),
+    transparent;
 }
 
-/* the golden dome glowing above the last words */
+/* the dome blazes above the last words — a real light source */
 .closing-plate {
   position: relative;
   z-index: 1;
-  width: min(300px, 64%);
-  margin: 0 auto clamp(24px, 4vh, 38px);
+  width: min(340px, 70%);
+  margin: 0 auto clamp(22px, 4vh, 36px);
   pointer-events: none;
 }
 .closing-plate::before {
   content: "";
   position: absolute;
-  inset: -18% -30%;
+  inset: -20% -34%;
   background: radial-gradient(50% 46% at 50% 58%,
-    color-mix(in srgb, var(--champagne) 20%, transparent) 0%,
-    color-mix(in srgb, var(--champagne) 8%, transparent) 44%,
+    color-mix(in srgb, var(--champagne) 24%, transparent) 0%,
+    color-mix(in srgb, var(--champagne) 9%, transparent) 44%,
     transparent 72%);
   z-index: -1;
 }
 .closing-plate__art {
   display: block;
   width: 100%;
-  aspect-ratio: 100 / 118;
-  object-fit: cover;
-  object-position: 50% 22%;
-  /* the dome in an arched marble window */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='%23fff' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='%23fff' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-}
-/* the gold rim around the arched window */
-.closing-plate::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  background: linear-gradient(172deg, var(--gold-bright) 0%, var(--champagne) 42%, var(--champagne-soft) 100%);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.2' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='118' viewBox='0 0 100 118'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.2' d='M 3 118 L 3 46 C 3 20 22 4 50 4 C 78 4 97 20 97 46 L 97 118 Z'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  pointer-events: none;
+  height: auto;
+  filter: drop-shadow(0 14px 34px color-mix(in srgb, var(--champagne) 26%, transparent));
 }
 
 .closing-bloom--r {
   position: absolute;
-  top: 5%;
-  right: -2%;
-  width: clamp(100px, 14vw, 170px);
+  top: 4%;
+  right: -1%;
+  width: clamp(110px, 15vw, 190px);
   transform: scaleX(-1);
-  opacity: .8;
+  opacity: .85;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, .5));
   pointer-events: none;
   user-select: none;
@@ -1142,14 +1144,13 @@
   font-size: clamp(2.8rem, 8vw, 4.6rem);
   line-height: 1.15;
   color: var(--gilding);
-  text-shadow: 0 2px 30px color-mix(in srgb, var(--champagne) 30%, transparent);
+  text-shadow: 0 2px 30px color-mix(in srgb, var(--champagne) 32%, transparent);
 }
 
 .closing-date {
   margin-top: 14px;
   color: var(--night-faint);
   font-size: .64rem;
-  line-height: 1.8;
 }
 
 .closing-dua {
@@ -1179,9 +1180,9 @@
 
 .closing-seal {
   position: relative;
-  width: clamp(4.6rem, 13vw, 5.6rem);
+  width: clamp(4.4rem, 12vw, 5.4rem);
   aspect-ratio: 1;
-  margin: clamp(28px, 5vh, 44px) auto 0;
+  margin: clamp(26px, 5vh, 42px) auto 0;
   display: grid;
   place-items: center;
 }
@@ -1193,14 +1194,15 @@
   justify-content: center;
   gap: 14px;
 }
-.closing-actions .btn { color: var(--sunset-soft); }
+.closing-actions .btn { color: var(--gold-bright); }
 
-/* ═══ THE FOOTER — the garden gate plaque ═══════════════════════ */
+/* ═══ THE FOOTER ════════════════════════════════════════════════ */
 
 .footer {
   position: relative;
   padding: clamp(38px, 7vh, 60px) var(--scene-pad-x) clamp(30px, 5vh, 44px);
-  background: var(--night-deep);
+  background: transparent;
+  border-top: 1px solid color-mix(in srgb, var(--champagne) 16%, transparent);
   text-align: center;
   display: grid;
   justify-items: center;
@@ -1216,7 +1218,7 @@
 }
 .footer-credit a:hover { color: var(--gilding); }
 
-/* ═══ shared geometry for the fine line-art ═════════════════════ */
+/* ═══ shared geometry for the art ═══════════════════════════════ */
 
 .countdown-shamsa, .ayat-arch, .noor-stage__shamsa { height: auto; }
 .std-emblem, .dresscode-orn, .closing-bloom--r, .closing-plate__art,
