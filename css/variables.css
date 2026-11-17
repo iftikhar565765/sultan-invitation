@@ -1,108 +1,56 @@
 /* ═══════════════════════════════════════════════════════════════
-   SULTAN · variables.css — the imperial court design system
+   SULTAN · variables.css — the gilded firman tokens
    ---------------------------------------------------------------
-   Built from four materials of the midnight court: polished onyx,
-   matte antique gold, ivory letter paper, and warm bronze. The page
-   itself is onyx; content rises as ivory letters framed in gold.
-   Every colour token is overwritten at runtime by main.js
-   applyTheme(); defaults mirror the sultan (onyx) preset.
+   The customizer's theme engine (main.js applyTheme) overwrites
+   the colour + font tokens at runtime; the defaults here mirror
+   the "sultan" preset exactly. Local ornament tokens derive from
+   the runtime colours so the editor recolours everything at once.
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── the sultan palette (onyx imperial court) ─────────────── */
-  --burgundy:      #8A6A2E;   /* bronze — primary accent           */
-  --burgundy-deep: #6E541F;   /* compressed bronze                 */
-  --wine:          #241B12;   /* deep bronze-black — dark accents  */
-  --crimson:       #E9D6AE;   /* pale gold — light accent on dark  */
-  --champagne:     #C8A45D;   /* antique gold                      */
-  --champagne-soft:#7C6128;   /* burnished gold                    */
-  --gold-ink:      #6E5622;   /* deep gold — TEXT on light (4.5+)  */
-  --parchment:     #F1E9D8;   /* warm parchment                    */
-  --ivory:         #F5EFE3;   /* ivory letter paper                */
-  --paper-raised:  #FBF7EC;   /* raised card paper                 */
-  --night:         #191410;   /* warm onyx band                    */
-  --night-deep:    #0E0B08;   /* polished onyx — the page ground   */
-  --olive:         #6E5E42;   /* umber bronze                      */
-  --olive-deep:    #544630;
-  --sage:          #B7A98C;   /* pale bronze                       */
-  --rose:          #E4CBA5;   /* champagne blush                   */
-  --ink:           #241D14;   /* court ink (calligraphy black)     */
-  --ink-soft:      #5E5140;   /* umber grey                        */
-  --charcoal:      #A2967F;
+  /* ── palette (mirrors the sultan preset in main.js) ─────────── */
+  --night-deep: #0C0A07;      /* lacquer ground                     */
+  --night:      #16120D;      /* warm lacquer bands                 */
+  --ivory:      #F5EFE3;      /* manuscript pages                   */
+  --paper-raised: #FBF7EC;    /* raised paper                       */
+  --parchment:  #F1E9D8;      /* warm washes                        */
+  --champagne:  #C8A45D;      /* antique gold — ornament only       */
+  --champagne-soft: #8F7434;  /* burnished gold                     */
+  --burgundy:   #8A6A2E;      /* bronze headings on ivory           */
+  --burgundy-deep: #6E541F;
+  --wine:       #241B12;      /* deep accents                       */
+  --crimson:    #E9D6AE;      /* pale gold — text on dark           */
+  --olive:      #6E5E42;
+  --olive-deep: #544630;
+  --sage:       #B7A98C;
+  --rose:       #E4CBA5;
+  --ink:        #241D14;      /* body ink on ivory                  */
+  --ink-soft:   #5E5140;      /* captions on ivory                  */
+  --charcoal:   #A2967F;
 
-  /* ── emerald-glow fallbacks from the old base, re-lit gold ── */
-  --emerald-glow:  var(--champagne);
-  --emerald-soft:  var(--champagne);
-  --emerald:       var(--burgundy);
+  /* ── derived ornament tokens ────────────────────────────────── */
+  --gold-line:  color-mix(in srgb, var(--champagne) 62%, transparent);
+  --gold-line-strong: color-mix(in srgb, var(--champagne) 92%, transparent);
+  --gold-ink:   var(--burgundy-deep);            /* gold for text on ivory */
+  --pale-gold:  var(--crimson);                  /* gold for text on dark  */
+  --lacquer-hairline: color-mix(in srgb, var(--champagne) 26%, transparent);
 
-  /* ── derived golds ────────────────────────────────────────── */
-  --gold:          var(--champagne);
-  --gold-bright:   color-mix(in srgb, var(--champagne) 66%, #F1E2B8);
-  --gold-dim:      color-mix(in srgb, var(--champagne) 58%, var(--ink) 14%);
-  --gold-line:     color-mix(in srgb, var(--champagne) 52%, transparent);
-  --gold-faint:    color-mix(in srgb, var(--champagne) 26%, transparent);
-  --gold-ghost:    color-mix(in srgb, var(--champagne) 13%, transparent);
+  /* ── type ───────────────────────────────────────────────────── */
+  --font-display:  "Bodoni Moda", "Playfair Display", serif;
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+  --font-script:   "Great Vibes", cursive;
+  --font-arabic:   "Amiri", serif;
+  --font-body:     "EB Garamond", Georgia, serif;
+  --font-ui:       "Jost", "Work Sans", sans-serif;
+  --font-hand:     "Caveat", cursive;
 
-  /* ── paper tones ──────────────────────────────────────────── */
-  --paper-line:    color-mix(in srgb, var(--champagne-soft) 50%, transparent);
-  --paper-wash:    color-mix(in srgb, var(--wine) 3%, var(--paper-raised));
-  --cream-deep:    color-mix(in srgb, var(--parchment) 62%, var(--ivory) 38%);
+  /* ── scale ──────────────────────────────────────────────────── */
+  --measure: 62ch;
+  --page-max: 920px;
+  --scene-pad: clamp(72px, 11vh, 132px);
+  --ease: cubic-bezier(.22, .61, .2, 1);
+  --reveal-delay: 0ms;
 
-  /* ── the court's own derived tones — candlelight on onyx ──── */
-  --sky-1:         var(--night-deep);
-  --sky-2:         color-mix(in srgb, var(--night) 84%, var(--olive) 16%);
-  --glass:         color-mix(in srgb, var(--night) 55%, transparent);
-  --glass-deep:    color-mix(in srgb, var(--night-deep) 72%, transparent);
-  --glass-edge:    color-mix(in srgb, var(--champagne) 26%, transparent);
-  --gilding:       color-mix(in srgb, var(--champagne) 86%, white 14%);
-  --gilding-soft:  color-mix(in srgb, var(--champagne) 55%, transparent);
-  --sunset:        color-mix(in srgb, var(--parchment) 88%, var(--champagne) 12%);
-  --sunset-soft:   color-mix(in srgb, var(--parchment) 58%, transparent);
-  --night-ink:     color-mix(in srgb, var(--parchment) 66%, transparent);
-  --night-faint:   color-mix(in srgb, var(--parchment) 48%, transparent);
-  --ember:         color-mix(in srgb, var(--champagne) 40%, #F1E2B8 60%);
-
-  /* ── luxury hardware — hairlines and soft shadow layers ───── */
-  --line:          color-mix(in srgb, var(--champagne) 44%, transparent);
-  --line-strong:   color-mix(in srgb, var(--champagne-soft) 72%, transparent);
-  --shadow-soft:   0 14px 40px -18px color-mix(in srgb, #000000 62%, transparent),
-                   0 4px 14px -8px color-mix(in srgb, #000000 44%, transparent);
-  --shadow-lift:   0 26px 60px -26px color-mix(in srgb, #000000 70%, transparent),
-                   0 8px 22px -12px color-mix(in srgb, #000000 50%, transparent);
-  --shadow-card:   var(--shadow-lift);
-  --shadow-gold:   0 1px 0 rgba(255, 244, 214, .55) inset;
-  --shadow-seal:   0 4px 10px color-mix(in srgb, var(--gold-ink) 28%, transparent),
-                   0 14px 30px color-mix(in srgb, #000000 22%, transparent);
-
-  /* ── type ───────────────────────────────────────────────────
-     Bodoni Moda — engraved imperial caps · Cormorant — courtly
-     editorial · Great Vibes — the romantic hand · EB Garamond —
-     the prose · Jost — labels · Amiri — the Quranic voice.      */
-  --font-editorial: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
-  --font-display:   'Bodoni Moda', 'Didot', 'Georgia', serif;
-  --font-script:    'Great Vibes', 'Segoe Script', 'Apple Chancery', cursive;
-  --font-hand:      'La Belle Aurore', 'Bradley Hand', 'Segoe Script', cursive;
-  --font-body:      'EB Garamond', 'Georgia', serif;
-  --font-ui:        'Jost', 'Trebuchet MS', 'Segoe UI', sans-serif;
-  --font-arabic:    'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
-  --font-arabic-disp: 'Aref Ruqaa', 'Amiri', serif;
-
-  /* ── flow of type sizes ───────────────────────────────────── */
-  --fs-hero-names:  clamp(3.4rem, 9vw, 6.2rem);
-  --fs-display:     clamp(2.1rem, 5.2vw, 3.3rem);
-  --fs-title:       clamp(1.55rem, 3.6vw, 2.35rem);
-  --fs-subtitle:    clamp(1.02rem, 2.2vw, 1.28rem);
-  --fs-body:        clamp(.98rem, 1.7vw, 1.13rem);
-  --fs-label:       clamp(.66rem, 1.25vw, .78rem);
-  --fs-numerals:    clamp(2rem, 5vw, 3.1rem);
-
-  /* ── measures & rhythm ────────────────────────────────────── */
-  --measure:        34rem;
-  --scene-pad-y:    clamp(4.4rem, 10vh, 7.2rem);
-  --scene-pad-x:    clamp(1.4rem, 5vw, 3.2rem);
-  --card-radius:    6px;
-  --speed:          .42s;
-  --ease:           cubic-bezier(.16, .84, .24, 1);
-
-  color-scheme: light;
+  --shadow-page: 0 30px 80px rgba(0, 0, 0, .55), 0 6px 24px rgba(0, 0, 0, .4);
+  --shadow-card: 0 18px 48px rgba(0, 0, 0, .35);
 }

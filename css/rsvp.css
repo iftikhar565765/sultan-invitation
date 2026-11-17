@@ -1,200 +1,168 @@
 /* ═══════════════════════════════════════════════════════════════
-   MUMTAZ · rsvp.css — the reply-desk form
-   Inputs written like fountain-pen entries on a shagun reply card:
-   hairline underlines instead of boxes, paisley-nibbed choices,
-   gold focus, henna-ink errors.
+   SULTAN · rsvp.css — the reply form on the ivory card
    ═══════════════════════════════════════════════════════════════ */
 
 .rsvp-form {
-  margin-top: 30px;
+  margin-top: clamp(1.8rem, 4vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
   text-align: left;
-  display: grid;
-  gap: 24px;
 }
 
-.field > label,
+.field { display: flex; flex-direction: column; gap: .5rem; }
+.field label,
 .field-legend {
-  display: block;
   font-family: var(--font-ui);
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: .68rem;
   letter-spacing: .2em;
-  font-size: .62rem;
-  color: var(--ink-soft);
-  margin-bottom: 9px;
+  text-transform: uppercase;
+  color: var(--champagne-soft);
 }
+.field-legend { padding: 0; }
 
 .field input[type="text"],
 .field input[type="number"],
 .field textarea {
   width: 100%;
-  font-family: var(--font-body);
-  font-size: 1.06rem;
+  font-family: var(--font-editorial);
+  font-size: 1.05rem;
   color: var(--ink);
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--paper-line);
-  border-radius: 0;
-  padding: .55em .2em;
-  transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+  background: var(--paper-raised);
+  border: 1px solid color-mix(in srgb, var(--champagne-soft) 42%, transparent);
+  border-radius: 2px;
+  padding: .78rem .95rem;
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+  -webkit-appearance: none;
   appearance: none;
 }
-.field textarea { resize: vertical; min-height: 60px; }
-
+.field textarea { resize: vertical; min-height: 3.2em; }
 .field input:focus,
 .field textarea:focus {
   outline: none;
-  border-bottom-color: var(--gold);
-  box-shadow: 0 1px 0 0 color-mix(in srgb, var(--champagne) 45%, transparent);
+  border-color: var(--champagne);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--champagne) 18%, transparent);
 }
-
-.field.is-invalid input,
-.field.is-invalid textarea {
-  border-bottom-color: var(--burgundy);
+.field ::placeholder {
+  color: color-mix(in srgb, var(--ink-soft) 62%, transparent);
+  font-style: italic;
 }
 
 .field-error {
-  margin-top: 8px;
   font-family: var(--font-ui);
-  font-size: .76rem;
-  line-height: 1.5;
-  color: var(--burgundy);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  color: #8A3B22;
 }
+.field.has-error input,
+.field.has-error .choice { border-color: #8A3B22; }
 
-.field--split input[type="number"] { max-width: 160px; }
-
-/* ── the two choices — shagun plaques with a paisley nib ──────── */
-
+/* attendance choices */
 .choices {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: .8rem;
 }
-
 .choice {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: .78em 1.3em;
-  background: transparent;
-  border: 1px solid var(--paper-line);
-  border-radius: 3px;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  letter-spacing: .01em;
-  text-transform: none;
-  color: var(--ink);
+  gap: .7rem;
+  padding: .8rem 1.2rem;
+  border: 1px solid color-mix(in srgb, var(--champagne-soft) 42%, transparent);
+  background: var(--paper-raised);
   cursor: pointer;
-  transition: border-color .25s var(--ease), box-shadow .25s var(--ease),
-    background-color .25s var(--ease), color .25s var(--ease);
+  transition: border-color .3s var(--ease), background-color .3s var(--ease);
 }
-.choice:hover {
-  border-color: var(--gold);
-}
-
-.choice input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
+.choice:hover { border-color: var(--champagne); }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
 .choice .diamond {
-  width: 12px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   flex: none;
   border: 1px solid var(--champagne-soft);
-  border-radius: 100% 100% 100% 3px;
-  rotate: 8deg;
-  background: transparent;
-  transition: background-color .25s var(--ease), border-color .25s var(--ease);
+  transform: rotate(45deg);
+  transition: background-color .25s var(--ease), box-shadow .25s var(--ease);
 }
-
+.choice input:checked ~ .diamond {
+  background: var(--champagne);
+  box-shadow: inset 0 0 0 2.5px var(--paper-raised);
+}
+.choice .text {
+  font-family: var(--font-editorial);
+  font-size: 1rem;
+  color: var(--ink);
+}
 .choice:has(input:checked) {
-  background: color-mix(in srgb, var(--rose) 24%, transparent);
-  border-color: var(--gold);
+  border-color: var(--champagne);
+  background: color-mix(in srgb, var(--champagne) 8%, var(--paper-raised));
 }
-.choice:has(input:checked) .diamond {
-  background: var(--burgundy);
-  border-color: var(--burgundy);
-}
-.choice:has(input:focus-visible) {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-}
+.choice:has(input:focus-visible) { outline: 2px solid var(--champagne); outline-offset: 2px; }
 
-/* ── submit & friends ─────────────────────────────────────────── */
+.field--split input[type="number"] { max-width: 130px; }
+
+.rsvp-honeypot {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 .rsvp-actions {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  margin-top: 6px;
-  text-align: center;
+  gap: 1rem;
+  margin-top: .4rem;
 }
 
 .rsvp-note {
-  font-family: var(--font-ui);
-  font-weight: 400;
-  font-size: .78rem;
-  line-height: 1.6;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: .88rem;
+  line-height: 1.65;
   color: var(--ink-soft);
   max-width: 46ch;
+  text-align: center;
 }
-.rsvp-note strong { color: var(--ink); font-weight: 600; }
+.rsvp-note strong { color: var(--ink); }
 
-.rsvp-status { font-family: var(--font-ui); font-size: .82rem; color: var(--olive-deep); }
-.rsvp-status.is-error { color: var(--burgundy); }
+.rsvp-status { min-height: 1.2em; }
+#rsvp-live { font-family: var(--font-ui); font-size: .8rem; letter-spacing: .06em; color: var(--burgundy-deep); }
 
-.rsvp-honeypot {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+/* the preview card after a (demo) reply */
+.rsvp-preview {
+  margin-top: 1.8rem;
+  border: 1px solid var(--gold-line);
+  background: var(--paper-raised);
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+  text-align: center;
 }
-
-/* ── the preview state ────────────────────────────────────────── */
-
-.rsvp-preview { text-align: center; }
-.script-intro {
-  font-family: var(--font-script);
-  font-size: 1.8rem;
-  color: var(--burgundy);
-}
+.script-intro { font-size: 1.7rem; color: var(--burgundy); }
 
 .rsvp-summary {
+  margin-top: 1.2rem;
   display: grid;
-  gap: 0;
-  margin: 22px 0;
+  grid-template-columns: max-content 1fr;
+  gap: .55rem 1.2rem;
   text-align: left;
-  border: 1px solid var(--line-strong);
-  border-radius: 3px;
-  overflow: hidden;
+  justify-content: center;
 }
-.rsvp-summary > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: .75em 1.1em;
-  border-bottom: 1px solid var(--paper-line);
-}
-.rsvp-summary > div:nth-child(odd) { background: color-mix(in srgb, var(--rose) 9%, transparent); }
-.rsvp-summary > div:last-child { border-bottom: 0; }
 .rsvp-summary dt {
   font-family: var(--font-ui);
-  font-weight: 600;
+  font-size: .64rem;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  letter-spacing: .16em;
-  font-size: .6rem;
-  color: var(--ink-soft);
-  align-self: center;
+  color: var(--champagne-soft);
+  align-self: baseline;
+  white-space: nowrap;
 }
 .rsvp-summary dd {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: .98rem;
+  font-family: var(--font-editorial);
+  font-size: 1rem;
   color: var(--ink);
-  text-align: right;
+  overflow-wrap: anywhere;
 }

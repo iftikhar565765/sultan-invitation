@@ -1,25 +1,18 @@
 /* ═══════════════════════════════════════════════════════════════
-   SULTAN · theme.css — the imperial court skin
+   SULTAN · theme.css — the lacquer world
    ---------------------------------------------------------------
-   The page is one continuous polished-onyx night. This file adds
-   the cinematic layer: marble ground, film grain, letterbox
-   opening, gold dust, candlelight vignettes and the imperial
-   typography voices. Section structure lives in sections.css.
+   Deep ink lacquer ground with candle-glow vignettes, film grain,
+   letterbox cinema bars for the opening, and the Arabic watermark.
+   No photographs — the night is built from light alone.
    ═══════════════════════════════════════════════════════════════ */
-
-/* ── 1 · the onyx world ───────────────────────────────────────── */
-
-/* the whole suite is one continuous midnight — the sheet itself
-   must never paint over the court ground */
-.sheet { background: transparent; }
 
 body {
   background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--night-deep) 82%, transparent) 0%,
-      color-mix(in srgb, var(--night-deep) 94%, transparent) 100%),
-    url("../assets/art/marble-onyx.jpg") center / cover no-repeat fixed,
-    var(--night-deep);
+    radial-gradient(140% 68% at 50% -14%,
+      color-mix(in srgb, var(--champagne) 9%, transparent) 0%, transparent 60%),
+    radial-gradient(120% 54% at 50% 116%,
+      color-mix(in srgb, var(--champagne) 6%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg, var(--night-deep) 0%, #0A0805 100%);
 }
 
 /* film grain — the whole page is one cinematic frame */
@@ -40,268 +33,176 @@ body {
   75% { transform: translate(-.6%, -.7%); }
   100% { transform: translate(0, 0); }
 }
+@media (prefers-reduced-motion: reduce) {
+  .grain { animation: none; }
+}
 
-/* ── 2 · the opening — letterbox cinema ───────────────────────── */
+/* ═══ THE OPENING — sealed decree on lacquer ═══════════════════ */
 
 .opening {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
   background:
-    radial-gradient(120% 70% at 50% -10%, color-mix(in srgb, var(--champagne) 15%, transparent) 0%, transparent 58%),
-    radial-gradient(90% 46% at 50% 112%, color-mix(in srgb, var(--champagne) 10%, transparent) 0%, transparent 66%),
-    linear-gradient(180deg, #000 0%, var(--night-deep) 34%, var(--night-deep) 100%);
+    radial-gradient(120% 70% at 50% -10%,
+      color-mix(in srgb, var(--champagne) 13%, transparent) 0%, transparent 58%),
+    radial-gradient(90% 46% at 50% 112%,
+      color-mix(in srgb, var(--champagne) 9%, transparent) 0%, transparent 66%),
+    linear-gradient(180deg, #060504 0%, var(--night-deep) 36%, #0A0805 100%);
+  transition: opacity .9s var(--ease);
 }
+.opening.is-leaving { opacity: 0; }
 
 /* letterbox bars — cinema curtains that part when the seal breaks */
 .letterbox {
   position: absolute;
   left: 0;
   right: 0;
-  height: max(11vh, 72px);
+  height: max(9vh, 64px);
   z-index: 40;
-  background: linear-gradient(180deg, #000 0%, color-mix(in srgb, #000 92%, var(--champagne) 8%) 100%);
+  background: linear-gradient(180deg, #000 0%, rgba(8, 6, 4, .96) 100%);
   pointer-events: none;
-  transition: transform 1.5s var(--ease), opacity 1.5s var(--ease);
+  transition: transform 1.5s var(--ease);
 }
-.letterbox--top { top: 0; transform-origin: top; box-shadow: 0 1px 0 color-mix(in srgb, var(--champagne) 34%, transparent); }
-.letterbox--bottom { bottom: 0; transform-origin: bottom; box-shadow: 0 -1px 0 color-mix(in srgb, var(--champagne) 34%, transparent); }
+.letterbox--top { top: 0; box-shadow: 0 1px 0 color-mix(in srgb, var(--champagne) 30%, transparent); }
+.letterbox--bottom { bottom: 0; box-shadow: 0 -1px 0 color-mix(in srgb, var(--champagne) 30%, transparent); }
 .opening.is-open .letterbox--top { transform: translateY(-102%); }
 .opening.is-open .letterbox--bottom { transform: translateY(102%); }
 
-/* the flap liner is onyx silk with a fine gold star lattice */
-.envelope__flap-liner {
-  background:
-    radial-gradient(130% 110% at 50% 0%, rgba(233, 214, 174, .26), transparent 62%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23C8A45D' stroke-opacity='.5'%3E%3Cpath d='M 22 4 L 26.6 15.4 L 38 20 L 26.6 24.6 L 22 36 L 17.4 24.6 L 6 20 L 17.4 15.4 Z'/%3E%3Ccircle cx='22' cy='20' r='2.2'/%3E%3Cpath d='M 0 20 H 6 M 38 20 H 44 M 22 0 V 4 M 22 36 V 40'/%3E%3C/g%3E%3C/svg%3E"),
-    linear-gradient(184deg,
-      color-mix(in srgb, var(--night) 88%, var(--champagne) 12%) 0%,
-      color-mix(in srgb, var(--night-deep) 90%, var(--champagne) 10%) 100%);
-}
-
-/* ── 3 · the hero — the imperial stage ────────────────────────── */
-
-.scene--hero {
-  background:
-    radial-gradient(120% 62% at 50% 0%, color-mix(in srgb, var(--champagne) 12%, transparent) 0%, transparent 56%),
-    radial-gradient(76% 42% at 50% 100%, color-mix(in srgb, var(--champagne) 7%, transparent) 0%, transparent 62%),
-    linear-gradient(180deg, color-mix(in srgb, var(--night) 88%, transparent) 0%, transparent 72%);
-}
-
-/* candlelight vignette around the whole stage */
-.scene--hero::after {
-  content: "";
+.opening__glow {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 54%;
+  width: min(88vw, 760px);
+  height: min(60vh, 520px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(50% 50% at 50% 50%,
+    color-mix(in srgb, var(--champagne) 14%, transparent) 0%,
+    transparent 70%);
   pointer-events: none;
-  background: radial-gradient(118% 88% at 50% 42%, transparent 52%, color-mix(in srgb, #000 46%, transparent) 100%);
 }
 
-/* gold dust drifting through the beam */
-.gold-dust { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
-.gold-dust i {
+/* corner arabesques — quiet, mirrored */
+.opening__corner {
   position: absolute;
-  bottom: -2%;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--gold-bright) 0%, transparent 72%);
-  opacity: 0;
-  animation: dust-rise var(--dust-dur, 11s) ease-in var(--dust-delay, 0s) infinite;
+  width: clamp(96px, 12vw, 170px);
+  opacity: .55;
+  -webkit-mask-image: radial-gradient(130% 130% at var(--mx, 0%) var(--my, 0%), #000 50%, transparent 74%);
+  mask-image: radial-gradient(130% 130% at var(--mx, 0%) var(--my, 0%), #000 50%, transparent 74%);
+  pointer-events: none;
+  z-index: 1;
 }
-@keyframes dust-rise {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.7); }
-  12% { opacity: var(--dust-op, .8); }
-  62% { opacity: calc(var(--dust-op, .8) * .55); }
-  100% { opacity: 0; transform: translate3d(var(--dust-x, 12px), -108vh, 0) scale(1.15); }
+.opening__corner img { display: block; width: 100%; height: auto; }
+.opening__corner--tl { top: 0; left: 0; }
+.opening__corner--tr { top: 0; right: 0; transform: scaleX(-1); --mx: 100%; }
+.opening__corner--bl { bottom: 0; left: 0; transform: scaleY(-1); --my: 100%; }
+.opening__corner--br { bottom: 0; right: 0; transform: scale(-1); --mx: 100%; --my: 100%; }
+
+.opening__lanterns { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.opening__lantern {
+  position: absolute;
+  width: clamp(64px, 8.6vw, 108px);
+  top: 7.5vh;
+  opacity: .85;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .5));
+}
+.opening__lantern--l { left: clamp(1rem, 7vw, 8rem); }
+.opening__lantern--r { right: clamp(1rem, 7vw, 8rem); }
+
+/* the bismillah watermark — written in light upon the night */
+.opening__watermark {
+  position: absolute;
+  left: 50%;
+  top: 10.5%;
+  transform: translateX(-50%);
+  font-size: clamp(4.6rem, 12vw, 9rem);
+  line-height: 1;
+  color: var(--champagne);
+  opacity: .05;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
 }
 
-/* the arch glows from within the court */
-.arch-card__frame { filter: drop-shadow(0 30px 60px color-mix(in srgb, #000 58%, transparent)); }
-
-/* drifting gold motes — candlelight pollen */
-.noor-stage__mote {
-  background: radial-gradient(circle, var(--gold-bright) 0%, transparent 70%);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--champagne) 55%, transparent);
+.opening__inner {
+  position: relative;
+  z-index: 5;
+  width: min(100%, 640px);
+  padding-top: clamp(2.2rem, 5vh, 3.4rem);
+  padding-inline: clamp(1.2rem, 5vw, 2rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ── 4 · the imperial typography ──────────────────────────────── */
-
-.display,
-.arch-card__title,
-.venue-title {
-  font-family: var(--font-display);
-  letter-spacing: .05em;
-}
-
-.kicker {
+.opening__eyebrow {
+  max-width: 46ch;
   font-family: var(--font-ui);
-  letter-spacing: .42em;
+  font-weight: 400;
   text-transform: uppercase;
-  font-weight: 600;
-}
-.kicker--ink { color: var(--gold-ink); }
-.kicker--light { color: var(--gold-bright); }
-
-.script--names,
-.opening__names,
-.envelope__letter-names { font-family: var(--font-script); }
-
-/* numerals carry the engraved-plaque voice */
-.count-clock strong,
-.std-numerals,
-.envelope__letter-date { font-family: var(--font-display); letter-spacing: .1em; }
-
-/* ── 5 · contrast law — the ground decides the ink ──────────────
-   Ivory letter panels (story / std / palette / rsvp card) carry
-   dark ink; the onyx chambers (ayat / details / venue / itinerary /
-   countdown / closing) carry ivory and gold. */
-
-.scene--story .prose,
-.scene--palette .prose,
-.scene--rsvp .prose,
-.scene--std .prose { color: var(--ink); }
-
-.scene--story .ink-soft,
-.scene--palette .ink-soft,
-.scene--rsvp .ink-soft,
-.scene--std .ink-soft { color: var(--ink-soft); }
-
-/* kickers: deep gold on paper, bright gold on the night */
-.scene--story .kicker,
-.scene--std .kicker,
-.scene--palette .kicker { color: var(--gold-ink); }
-.scene--story .kicker::before, .scene--story .kicker::after,
-.scene--std .kicker::before, .scene--std .kicker::after,
-.scene--palette .kicker::before, .scene--palette .kicker::after { border-color: var(--gold-line); }
-
-.scene--ayat .kicker,
-.scene--details .kicker,
-.scene--venue .kicker,
-.scene--itinerary .kicker,
-.scene--countdown .kicker,
-.scene--closing .kicker { color: var(--champagne); }
-
-/* dark chambers: ivory headings, bright gold echoes */
-.scene--details .display,
-.scene--venue .display { color: var(--parchment); }
-.scene--details .display .script,
-.scene--venue .display .script { color: var(--gold-bright); }
-.scene--details .prose,
-.scene--venue .prose { color: var(--night-ink); }
-
-/* ── 6 · motion — filmic reveals ──────────────────────────────── */
-
-.reveal {
-  transition:
-    opacity .9s var(--ease),
-    transform 1.15s var(--ease);
-}
-.scene-body .reveal:nth-child(2) { transition-delay: .08s; }
-.scene-body .reveal:nth-child(3) { transition-delay: .16s; }
-.scene-body .reveal:nth-child(4) { transition-delay: .24s; }
-.scene-body .reveal:nth-child(5) { transition-delay: .3s; }
-
-/* a slow light sweep across the dark-band display titles */
-.scene--countdown .count-script em,
-.scene--ayat .ayat-title {
-  background: linear-gradient(100deg,
-    var(--gold-bright) 30%,
-    #F5E7BF 46%,
-    var(--gold-bright) 62%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: name-shimmer 7s ease-in-out 1.6s infinite;
-}
-@keyframes name-shimmer {
-  0%, 100% { background-position: 12% 0; }
-  50% { background-position: 88% 0; }
-}
-
-/* the mini ayat — a small Amiri plate inside the story letter */
-.mini-ayat {
-  margin: clamp(1.5rem, 3.8vh, 2.2rem) auto 0;
-  max-width: 34rem;
-  padding: clamp(1.1rem, 3vh, 1.6rem) clamp(1.2rem, 3.4vw, 1.9rem);
-  background:
-    linear-gradient(180deg, var(--paper-raised) 0%, var(--parchment) 100%);
-  border: 1px solid color-mix(in srgb, var(--champagne) 44%, transparent);
-  box-shadow: var(--shadow-soft);
-}
-.mini-ayat__ar {
-  margin: 0;
-  font-family: var(--font-arabic);
-  font-size: clamp(1.5rem, 3.4vw, 1.9rem);
+  letter-spacing: .3em;
+  text-indent: .3em;
+  font-size: clamp(.6rem, 1.6vw, .72rem);
   line-height: 2;
-  color: var(--ink);
-}
-.mini-ayat__en {
-  margin: .7rem 0 0;
-  font-family: var(--font-editorial);
-  font-style: italic;
-  font-size: clamp(.98rem, 2vw, 1.08rem);
-  color: var(--ink-soft);
-}
-.mini-ayat__ref {
-  margin: .55rem 0 0;
-  color: var(--gold-ink);
+  color: color-mix(in srgb, var(--parchment) 88%, transparent);
+  opacity: .92;
 }
 
-/* lanterns sway slower — courtly, unhurried */
-.noor-stage__lantern,
-.opening__lantern { animation-duration: 9.5s; }
+.opening__names {
+  margin-top: .9rem;
+  font-size: clamp(2.5rem, 6.4vw, 3.9rem);
+  line-height: 1.15;
+  color: var(--ivory);
+  text-shadow: 0 2px 30px rgba(0, 0, 0, .55);
+}
 
-/* buttons — burnished imperial gold */
-.btn {
-  letter-spacing: .22em;
-  text-transform: uppercase;
+.opening__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: clamp(1.6rem, 3.4vh, 2.4rem);
   font-family: var(--font-ui);
-  font-weight: 600;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .28em;
+  text-indent: .28em;
+  font-size: .62rem;
+  color: color-mix(in srgb, var(--champagne) 85%, white 5%);
+  opacity: .9;
 }
-.btn--emerald,
-.btn--primary {
-  background: linear-gradient(165deg, var(--gold-bright) 0%, var(--champagne) 48%, var(--champagne-soft) 100%);
-  color: var(--night-deep);
-  border: 1px solid color-mix(in srgb, var(--champagne-soft) 60%, transparent);
-  box-shadow: 0 10px 26px -12px color-mix(in srgb, #000 60%, transparent);
+.opening__hint-rule {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-line-strong));
 }
-.btn--emerald:hover,
-.btn--primary:hover { filter: brightness(1.06); }
-.btn--ghost {
-  border: 1px solid color-mix(in srgb, var(--champagne) 52%, transparent);
-  color: var(--gold-bright);
-  background: transparent;
-}
-.btn--goldline {
-  border: 1px solid color-mix(in srgb, var(--champagne) 52%, transparent);
-  color: var(--gold-ink);
-  background: transparent;
-}
+.opening__hint-rule:last-child { background: linear-gradient(90deg, var(--gold-line-strong), transparent); }
 
-/* ── 7 · the court's hardware ─────────────────────────────────── */
+.opening__open { margin-top: 1.3rem; }
 
-/* form fields on ivory paper keep ink contrast */
-.field input,
-.field textarea,
-.field select {
-  color: var(--ink);
-  border-color: color-mix(in srgb, var(--champagne-soft) 44%, transparent);
+.opening__skip {
+  margin-top: 1.15rem;
+  font-family: var(--font-ui);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--parchment) 62%, transparent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--champagne) 45%, transparent);
+  transition: color .3s var(--ease);
 }
+.opening__skip:hover { color: var(--ivory); }
 
-/* ── 8 · reduced motion & small screens ───────────────────────── */
+/* the suite stays asleep beneath the opening */
+body.intro-pending { overflow: hidden; }
+body.intro-pending main { visibility: hidden; }
+body.intro-done main { visibility: visible; }
 
 @media (prefers-reduced-motion: reduce) {
-  .grain, .gold-dust i { animation: none; }
-  .hero-names, .noor-stage .script--names {
-    animation: none;
-    background: none;
-    -webkit-text-fill-color: currentColor;
-    color: var(--gold-bright);
-  }
-}
-
-@media (max-width: 720px) {
-  .letterbox { height: max(8vh, 56px); }
-  .gold-dust i { display: none; }
-  body { background-attachment: scroll; }
+  .letterbox { transition: none; }
+  .opening { transition: none; }
 }

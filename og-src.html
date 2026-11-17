@@ -4,49 +4,62 @@
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel:wght@400;500&family=Great+Vibes&family=Jost:wght@300;400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Bodoni+Moda:opsz,wght@6..96,400&family=Great+Vibes&family=Jost:wght@300;400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:1200px; height:630px; overflow:hidden; }
   body {
     background:
-      radial-gradient(70% 46% at 50% 34%, rgba(200,164,93,.17) 0%, transparent 62%),
-      radial-gradient(120% 80% at 50% 118%, rgba(200,164,93,.12) 0%, transparent 60%),
-      linear-gradient(180deg, #191410 0%, #0E0B08 100%);
+      radial-gradient(70% 46% at 50% 32%, rgba(200,164,93,.16) 0%, transparent 62%),
+      radial-gradient(120% 80% at 50% 118%, rgba(200,164,93,.11) 0%, transparent 60%),
+      linear-gradient(180deg, #14100B 0%, #0C0A07 100%);
     position: relative;
     display:flex; align-items:center; justify-content:center;
   }
-  .shamsa { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:560px; opacity:.5; }
-  .arch { position:absolute; left:50%; top:50%; transform:translate(-50%,-49%); width:430px; opacity:.96; }
-  .inner { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:300px; text-align:center; }
-  .bismillah { font-family:'Amiri',serif; color:rgba(212,181,116,.92); font-size:26px; margin-bottom:8px; }
-  .eyebrow { font-family:'Jost',sans-serif; font-weight:300; color:rgba(245,239,227,.62); font-size:14px; letter-spacing:.3em; text-indent:.3em; text-transform:uppercase; }
-  .names { font-family:'Great Vibes',cursive; font-size:88px; line-height:1.04; color:#EBD9A9; text-shadow:0 3px 30px rgba(200,164,93,.4); margin-top:6px; }
-  .date { font-family:'Cinzel',serif; color:#C8A45D; font-size:25px; letter-spacing:.2em; margin-top:10px; }
-  .venue { font-family:'Cormorant Garamond',serif; color:rgba(245,239,227,.6); font-size:18px; letter-spacing:.12em; margin-top:8px; }
-  .lantern-l, .lantern-r { position:absolute; top:-24px; width:170px; height:auto; }
-  .lantern-l { left:96px; }
-  .lantern-r { right:96px; transform:scaleX(-1); }
-  .crescent { position:absolute; top:30px; left:50%; transform:translateX(-50%); width:56px; }
-  .roses-bl, .roses-br { position:absolute; bottom:-20px; width:250px; height:auto; }
-  .roses-bl { left:-24px; transform:rotate(-4deg); }
-  .roses-br { right:-24px; transform:scaleX(-1) rotate(-4deg); }
+  .shamsa { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:600px; opacity:.4; }
+  .corner { position:absolute; width:168px; opacity:.8; }
+  .corner-tl { top:-14px; left:-14px; }
+  .corner-tr { top:-14px; right:-14px; transform:scaleX(-1); }
+  .corner-bl { bottom:-14px; left:-14px; transform:scaleY(-1); }
+  .corner-br { bottom:-14px; right:-14px; transform:scale(-1); }
+  .card {
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:470px; height:400px;
+    background: linear-gradient(180deg, #FBF7EC 0%, #F5EFE3 100%);
+    box-shadow: 0 30px 80px rgba(0,0,0,.55), inset 0 0 0 1px rgba(200,164,93,.4);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card::before { content:""; position:absolute; inset:12px; border:1px solid rgba(200,164,93,.62); }
+  .card::after  { content:""; position:absolute; inset:17px; border:1px solid rgba(200,164,93,.3); }
+  .inner { width:380px; text-align:center; }
+  .bismillah { font-family:'Amiri',serif; color:#6E541F; font-size:30px; margin-bottom:10px; }
+  .eyebrow { font-family:'Jost',sans-serif; font-weight:400; color:#8F7434; font-size:12.5px; letter-spacing:.26em; text-indent:.26em; text-transform:uppercase; white-space:nowrap; }
+  .lead { font-family:'Cormorant Garamond',serif; font-style:italic; color:#5E5140; font-size:18px; margin-top:6px; }
+  .names { font-family:'Great Vibes',cursive; font-size:64px; line-height:1.06; color:#241D14; margin-top:8px; }
+  .date { font-family:'Bodoni Moda',serif; color:#8A6A2E; font-size:23px; letter-spacing:.22em; margin-top:14px; }
+  .venue { font-family:'Cormorant Garamond',serif; color:#5E5140; font-size:18px; letter-spacing:.1em; margin-top:8px; }
+  .lantern-l, .lantern-r { position:absolute; top:44px; width:150px; height:auto; opacity:.95; }
+  .lantern-l { left:118px; }
+  .lantern-r { right:118px; transform:scaleX(-1); }
 </style>
 </head>
 <body>
 <img class="shamsa" src="assets/art/shamsa-sultan.png" alt="">
-<img class="arch" src="assets/art/arch-sultan-tall.png" alt="">
-<img class="crescent" src="assets/art/crescent-sultan.png" alt="">
+<img class="corner corner-tl" src="assets/art/corner-sultan.png" alt="">
+<img class="corner corner-tr" src="assets/art/corner-sultan.png" alt="">
+<img class="corner corner-bl" src="assets/art/corner-sultan.png" alt="">
+<img class="corner corner-br" src="assets/art/corner-sultan.png" alt="">
 <img class="lantern-l" src="assets/art/lantern-sultan.png" alt="">
 <img class="lantern-r" src="assets/art/lantern-sultan.png" alt="">
-<div class="inner">
-  <p class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-  <p class="eyebrow">With the blessings of our families</p>
-  <p class="names">Layla &amp; Omar</p>
-  <p class="date">09 · 10 · 2027</p>
-  <p class="venue">The Shahi Divan · Hyderabad</p>
+<div class="card">
+  <div class="inner">
+    <p class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <p class="eyebrow">With the blessings of our families</p>
+    <p class="lead">We joyfully invite you to the Nikah of</p>
+    <p class="names">Layla &amp; Omar</p>
+    <p class="date">09 · 10 · 2027</p>
+    <p class="venue">The Shahi Divan · Hyderabad</p>
+  </div>
 </div>
-<img class="roses-bl" src="assets/art/roses-sultan.png" alt="">
-<img class="roses-br" src="assets/art/roses-sultan.png" alt="">
 </body>
 </html>

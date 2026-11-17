@@ -1,49 +1,94 @@
 /* ═══════════════════════════════════════════════════════════════
-   SULTAN · the imperial court — responsive
+   SULTAN · responsive.css — pixel-perfect from 320px to 2560px
+   ---------------------------------------------------------------
+   Strategy: the desktop layout is built mobile-first with clamp();
+   these rules refine only where refinement is needed. Every
+   absolute-positioned ornament is rescaled here — nothing may
+   cross a text column, nothing may create horizontal overflow.
    ═══════════════════════════════════════════════════════════════ */
 
-@media (max-width: 1024px) {
-  .noor-stage__lantern--l { left: -0.4rem; }
-  .noor-stage__lantern--r { right: -0.4rem; }
-}
-
-@media (max-width: 760px) {
-  .closing-plate { width: min(260px, 72%); }
-  .closing-bloom--r { width: clamp(90px, 22vw, 140px); top: 3%; }
-
-  /* the story letter fills its chamber */
-  .scene--story .scene-body,
-  .scene--std .scene-body,
-  .scene--palette .scene-body {
-    padding-inline: clamp(1.2rem, 6vw, 2.6rem);
-  }
-  .story-corner { width: clamp(4.6rem, 20vw, 7rem); opacity: .75; }
-  .story-corner--tl { top: 1.4rem; left: .4rem; }
-  .story-corner--br { bottom: 1.4rem; right: .4rem; }
-
-  .arch-card { width: min(100%, 420px); }
-  .arch-card__inner { left: 24%; right: 24%; top: 29%; bottom: 12%; padding-inline: 7%; }
-}
-
+/* ── narrow phones ───────────────────────────────────────────── */
 @media (max-width: 560px) {
-  .arch-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
-  .arch-card__bismillah { font-size: .95rem; }
-  .arch-card__venue-address { font-size: .56rem; }
-  .moon-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
-  .opening__florals { width: clamp(8rem, 30vw, 12rem); }
-  .opening__lantern--l { left: .2rem; }
-  .opening__lantern--r { right: .2rem; }
-  .noor-stage__lantern { width: clamp(3.6rem, 13vw, 5rem); top: -1.6rem; }
-  .noor-stage__lantern--l { left: -.2rem; }
-  .noor-stage__lantern--r { right: -.2rem; }
-  .noor-orn--swag-bl, .noor-orn--swag-br { display: none; }
-  .arch-card__names { font-size: inherit; }
-  .count-clock { flex-wrap: wrap; gap: 1.1rem 1.6rem; }
-  .count-unit { min-width: 4.4rem; }
-  .watermark-script { font-size: clamp(5rem, 26vw, 9rem); right: -.6rem; }
-  .std-actions .btn { width: min(280px, 82vw); }
-  .day-words { gap: 1rem 1.6rem; }
-  .event__note { max-width: 100%; }
-  .noor-orn--roses-bl { left: -2.4rem; }
-  .noor-orn--roses-br { right: -2.4rem; }
+
+  .opening__corner { width: clamp(88px, 26vw, 140px); opacity: .42; }
+  .opening__lantern { width: clamp(48px, 12vw, 64px); top: 6.4vh; }
+  .opening__lantern--l { left: .4rem; }
+  .opening__lantern--r { right: .4rem; }
+  .opening__watermark { font-size: 4rem; top: 9%; }
+  .opening__names { font-size: clamp(2.1rem, 9.4vw, 2.7rem); }
+  .envelope-stage { width: min(100%, 400px); }
+
+  .hero-stage__lantern { width: clamp(44px, 11vw, 60px); top: 3.6vh; }
+  .hero-stage__lantern--l { left: .3rem; }
+  .hero-stage__lantern--r { right: .3rem; }
+  .hero-stage__shamsa { width: 150vw; opacity: .3; }
+
+  .decree__corner { width: clamp(52px, 13vw, 72px); }
+  .decree__corner--tl, .decree__corner--tr,
+  .decree__corner--bl, .decree__corner--br {
+    transform: none;
+  }
+  .decree__corner--tl { transform: translate(-10px, -10px); }
+  .decree__corner--tr { transform: scaleX(-1) translate(-10px, -10px); }
+  .decree__corner--bl { transform: scaleY(-1) translate(0, -10px); }
+  .decree__corner--br { transform: scale(-1) translate(0, -10px); }
+  .decree { padding-inline: 1.4rem; }
+  .decree__venue-address { font-size: .8rem; }
+
+  .page { padding-inline: 1.3rem; }
+  .page__corner { width: clamp(52px, 13vw, 76px); }
+  .page__corner--tl { transform: translate(-9px, -9px); }
+  .page__corner--br { transform: rotate(180deg) translate(-9px, -9px); }
+  .page::before { inset: 10px; }
+  .page::after { inset: 14px; }
+
+  /* the events timeline collapses to a compact single column */
+  .event { grid-template-columns: 44px 1fr; gap: .9rem; }
+  .event__node { width: 44px; height: 44px; }
+  .event__numeral { font-size: .82rem; }
+  .event::before { left: 21px; top: 46px; }
+  .event__index { font-size: 1.2rem; top: .7rem; right: .8rem; }
+
+  .particulars-row { grid-template-columns: 1fr; gap: 1.3rem; }
+
+  .count-clock { gap: .8rem; }
+  .count-unit { min-width: 0; flex: 1 1 40%; padding: .8rem .4rem .8rem; }
+
+  .rsvp-card { padding-inline: 1.3rem; }
+  .rsvp-summary { grid-template-columns: 1fr; gap: .2rem; }
+  .rsvp-summary dd { margin-bottom: .7rem; }
+
+  .watermark-script { font-size: 4.6rem; right: -.4rem; }
+  .closing-plate { width: min(72vw, 280px); }
+  .std-actions .btn { width: min(300px, 86vw); }
+
+  .topnav__links { display: none; }
+  .topnav { justify-content: center; }
+}
+
+/* ── small tablets ───────────────────────────────────────────── */
+@media (max-width: 760px) {
+  :root { --scene-pad: clamp(56px, 9vh, 88px); }
+
+  .ayat-plate {
+    border-width: clamp(16px, 5vw, 28px);
+    padding: clamp(2.2rem, 7vw, 3.2rem) 1.6rem;
+  }
+
+  .venue-stage { padding-inline: clamp(3rem, 14vw, 4.4rem); }
+  .venue-lantern { width: clamp(44px, 10vw, 60px); }
+}
+
+/* ── generous desktops ───────────────────────────────────────── */
+@media (min-width: 1600px) {
+  :root { --page-max: 980px; }
+  .decree { width: min(100%, 660px); }
+  .hero-stage__shamsa { width: min(80vw, 960px); }
+}
+
+/* ── short viewports (landscape phones) ──────────────────────── */
+@media (max-height: 560px) and (orientation: landscape) {
+  .opening__lantern { width: 44px; top: 9vh; }
+  .envelope-stage { width: min(46vh, 380px); }
+  .hero-stage { padding-top: 4.6rem; padding-bottom: 3rem; }
 }
