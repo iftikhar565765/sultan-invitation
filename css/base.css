@@ -183,14 +183,38 @@ a { color: inherit; }
 
 .page__corner {
   position: absolute;
-  width: clamp(72px, 11vw, 120px);
-  opacity: .9;
+  width: 0;
+  height: 0;
   pointer-events: none;
   z-index: 2;
 }
-.page__corner img { display: block; width: 100%; height: auto; }
-.page__corner--tl { top: 0; left: 0; transform: translate(-14px, -14px); }
-.page__corner--br { bottom: 0; right: 0; transform: rotate(180deg) translate(-14px, -14px); }
+/* gilded bead at the corner of the inner hairline frame */
+.page__corner::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: linear-gradient(135deg, #DCC083 0%, #A8843C 100%);
+  box-shadow: 0 1px 4px rgba(90, 66, 20, .35);
+}
+/* a small echo dot set into the diagonal */
+.page__corner::after {
+  content: "";
+  position: absolute;
+  width: 3.5px;
+  height: 3.5px;
+  left: 10px;
+  top: 10px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--champagne-soft);
+  opacity: .8;
+}
+.page__corner--tl { top: 14px; left: 14px; }
+.page__corner--br { bottom: 14px; right: 14px; transform: scale(-1); }
 
 /* ═══ ORNAMENT RULE — divider art with hairlines ═══════════════ */
 
@@ -365,9 +389,9 @@ a { color: inherit; }
 .topnav.is-scrolled {
   opacity: 1;
   pointer-events: auto;
-  background: color-mix(in srgb, var(--night-deep) 82%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(200, 164, 93, .16);
+  background: color-mix(in srgb, var(--night-deep) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 164, 93, .18);
 }
 body.intro-done .topnav.is-scrolled { opacity: 1; }
 .topnav__brand {

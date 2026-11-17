@@ -12,14 +12,16 @@
   margin-top: clamp(1.6rem, 4vh, 2.6rem);
 }
 
-/* the shamsa halo behind the envelope */
+/* the shamsa halo behind the envelope — masked so its rim melts away */
 .envelope-lace {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 158%;
+  width: 152%;
   transform: translate(-50%, -50%);
-  opacity: .3;
+  opacity: .32;
+  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 58%, transparent 86%);
+  mask-image: radial-gradient(50% 50% at 50% 50%, #000 58%, transparent 86%);
   pointer-events: none;
   user-select: none;
 }

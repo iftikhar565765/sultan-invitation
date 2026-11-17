@@ -10,7 +10,11 @@
 /* ── narrow phones ───────────────────────────────────────────── */
 @media (max-width: 560px) {
 
-  .opening__corner { width: clamp(88px, 26vw, 140px); opacity: .42; }
+  .opening__corner { width: clamp(58px, 24vw, 120px); }
+  .opening__corner--tl { top: 8px; left: 8px; }
+  .opening__corner--tr { top: 8px; right: 8px; }
+  .opening__corner--bl { bottom: 8px; left: 8px; }
+  .opening__corner--br { bottom: 8px; right: 8px; }
   .opening__lantern { width: clamp(48px, 12vw, 64px); top: 6.4vh; }
   .opening__lantern--l { left: .4rem; }
   .opening__lantern--r { right: .4rem; }
@@ -21,24 +25,14 @@
   .hero-stage__lantern { width: clamp(44px, 11vw, 60px); top: 3.6vh; }
   .hero-stage__lantern--l { left: .3rem; }
   .hero-stage__lantern--r { right: .3rem; }
-  .hero-stage__shamsa { width: 150vw; opacity: .3; }
+  .decree__halo { width: 128%; opacity: .42; }
 
-  .decree__corner { width: clamp(52px, 13vw, 72px); }
-  .decree__corner--tl, .decree__corner--tr,
-  .decree__corner--bl, .decree__corner--br {
-    transform: none;
-  }
-  .decree__corner--tl { transform: translate(-10px, -10px); }
-  .decree__corner--tr { transform: scaleX(-1) translate(-10px, -10px); }
-  .decree__corner--bl { transform: scaleY(-1) translate(0, -10px); }
-  .decree__corner--br { transform: scale(-1) translate(0, -10px); }
   .decree { padding-inline: 1.4rem; }
   .decree__venue-address { font-size: .8rem; }
 
   .page { padding-inline: 1.3rem; }
-  .page__corner { width: clamp(52px, 13vw, 76px); }
-  .page__corner--tl { transform: translate(-9px, -9px); }
-  .page__corner--br { transform: rotate(180deg) translate(-9px, -9px); }
+  .page__corner--tl { top: 10px; left: 10px; }
+  .page__corner--br { bottom: 10px; right: 10px; }
   .page::before { inset: 10px; }
   .page::after { inset: 14px; }
 
@@ -59,7 +53,7 @@
   .rsvp-summary dd { margin-bottom: .7rem; }
 
   .watermark-script { font-size: 4.6rem; right: -.4rem; }
-  .closing-plate { width: min(72vw, 280px); }
+  .std-emblem-wrap { width: min(64vw, 280px); }
   .std-actions .btn { width: min(300px, 86vw); }
 
   .topnav__links { display: none; }
@@ -71,7 +65,6 @@
   :root { --scene-pad: clamp(56px, 9vh, 88px); }
 
   .ayat-plate {
-    border-width: clamp(16px, 5vw, 28px);
     padding: clamp(2.2rem, 7vw, 3.2rem) 1.6rem;
   }
 
@@ -83,7 +76,7 @@
 @media (min-width: 1600px) {
   :root { --page-max: 980px; }
   .decree { width: min(100%, 660px); }
-  .hero-stage__shamsa { width: min(80vw, 960px); }
+  .decree__halo { width: min(108%, 860px); }
 }
 
 /* ── short viewports (landscape phones) ──────────────────────── */

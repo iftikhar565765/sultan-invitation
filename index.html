@@ -73,18 +73,10 @@
     <div class="letterbox letterbox--top" aria-hidden="true"></div>
     <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
 
-    <span class="opening__corner opening__corner--tl" aria-hidden="true" data-element-key="opening-tiles">
-      <img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async">
-    </span>
-    <span class="opening__corner opening__corner--tr" aria-hidden="true">
-      <img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async">
-    </span>
-    <span class="opening__corner opening__corner--bl" aria-hidden="true">
-      <img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async">
-    </span>
-    <span class="opening__corner opening__corner--br" aria-hidden="true">
-      <img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async">
-    </span>
+    <span class="opening__corner opening__corner--tl" aria-hidden="true" data-element-key="opening-tiles"></span>
+    <span class="opening__corner opening__corner--tr" aria-hidden="true"></span>
+    <span class="opening__corner opening__corner--bl" aria-hidden="true"></span>
+    <span class="opening__corner opening__corner--br" aria-hidden="true"></span>
 
     <span class="opening__lanterns" aria-hidden="true">
       <img class="opening__lantern opening__lantern--l" src="assets/art/lantern-sultan.png" alt=""
@@ -140,7 +132,30 @@
           </span>
 
           <span class="envelope__stamps" aria-hidden="true" data-element-key="envelope-stamps">
-            <svg class="stamp" viewBox="0 0 90 110" aria-hidden="true"><rect x="3" y="3" width="84" height="104" fill="#FBF7EA" stroke="#B99752" stroke-width="3" stroke-dasharray="0.1 7" stroke-linecap="round"/><rect x="13" y="13" width="64" height="84" fill="none" stroke="#8F7434" stroke-width="1.2" stroke-opacity=".7"/><g fill="none" stroke="#1D1710"><path stroke-width="1.8" d="M 45 30 A 13 13 0 1 0 45 56 A 10.5 10.5 0 1 1 45 30 Z"/><path stroke="#B99752" stroke-width="1.5" d="M 52 38 L 54 42.6 L 58.8 43.2 L 55.3 46.4 L 56.4 51 L 52 48.6 L 47.6 51 L 48.7 46.4 L 45.2 43.2 L 50 42.6 Z"/></g><path d="M 29 84 h 32" fill="none" stroke="#B99752" stroke-width="1.2" stroke-opacity=".8"/><circle cx="45" cy="84" r="1.6" fill="#B99752"/></svg>
+            <svg class="stamp" viewBox="0 0 96 118" aria-hidden="true">
+              <defs>
+                <linearGradient id="stamp-paper" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#FDFBF3"/>
+                  <stop offset=".55" stop-color="#F7F1E0"/>
+                  <stop offset="1" stop-color="#EFE6CF"/>
+                </linearGradient>
+              </defs>
+              <rect x="3" y="3" width="90" height="112" fill="url(#stamp-paper)" stroke="#B99752" stroke-width="3" stroke-dasharray="0.1 7.4" stroke-linecap="round"/>
+              <rect x="12.5" y="12.5" width="71" height="93" fill="none" stroke="#B99752" stroke-width="1" stroke-opacity=".85"/>
+              <rect x="15.5" y="15.5" width="65" height="87" fill="none" stroke="#8F7434" stroke-width=".7" stroke-opacity=".55"/>
+              <g fill="none" stroke="#B08A3E" stroke-linecap="round">
+                <path stroke-width="2" d="M 48 30 A 15 15 0 1 0 48 60 A 12 12 0 1 1 48 30 Z"/>
+                <path fill="#B99752" stroke="none" d="M 56 37.5 L 58.2 42.8 L 63.9 43.3 L 59.6 47 L 61 52.5 L 56 49.5 L 51 52.5 L 52.4 47 L 48.1 43.3 L 53.8 42.8 Z"/>
+                <path stroke-width="1" stroke-opacity=".9" d="M 36 66 q 6 5 12 0 q 6 5 12 0"/>
+                <path stroke-width="1" stroke-opacity=".7" d="M 38 70 q 5 4 10 0 q 5 4 10 0"/>
+              </g>
+              <g fill="#8F7434" font-family="Georgia, serif" font-size="9" letter-spacing="2">
+                <text x="48" y="88" text-anchor="middle">09 · X</text>
+              </g>
+              <path d="M 32 94 h 32" fill="none" stroke="#B99752" stroke-width="1" stroke-opacity=".8"/>
+              <circle cx="27" cy="94" r="1.5" fill="#B99752"/>
+              <circle cx="69" cy="94" r="1.5" fill="#B99752"/>
+            </svg>
           </span>
 
           <span class="envelope__seal-wrap" aria-hidden="true" data-element-key="envelope-seal">
@@ -181,8 +196,6 @@
       <!-- ═══ Ⅰ · THE DECREE — hero ═════════════════════════════ -->
       <section id="invitation" class="scene scene--hero" aria-labelledby="invitation-title">
         <div class="hero-stage">
-          <img class="hero-stage__shamsa" src="assets/art/shamsa-sultan.png" alt="" loading="eager"
-            decoding="async" aria-hidden="true">
           <img class="hero-stage__lantern hero-stage__lantern--l" src="assets/art/lantern-sultan.png"
             alt="" loading="lazy" decoding="async" aria-hidden="true" data-drift="0.6">
           <img class="hero-stage__lantern hero-stage__lantern--r" src="assets/art/lantern-sultan.png"
@@ -196,10 +209,11 @@
 
           <figure class="decree reveal" data-element-key="hero-card" role="img"
             aria-label="A gilded manuscript card holding the invitation — Bismillah, the names Layla and Omar, and the date of the Nikah.">
-            <span class="decree__corner decree__corner--tl" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async"></span>
-            <span class="decree__corner decree__corner--tr" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async"></span>
-            <span class="decree__corner decree__corner--bl" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async"></span>
-            <span class="decree__corner decree__corner--br" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="eager" decoding="async"></span>
+            <img class="decree__halo" src="assets/art/shamsa-sultan.png" alt="" loading="eager" decoding="async" aria-hidden="true">
+            <span class="decree__corner decree__corner--tl" aria-hidden="true"></span>
+            <span class="decree__corner decree__corner--tr" aria-hidden="true"></span>
+            <span class="decree__corner decree__corner--bl" aria-hidden="true"></span>
+            <span class="decree__corner decree__corner--br" aria-hidden="true"></span>
 
             <figcaption class="decree__inner">
               <p class="decree__bismillah" lang="ar" dir="rtl" data-content="content.bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
@@ -252,8 +266,8 @@
       <!-- ═══ Ⅱ · THE CHRONICLE — story ═════════════════════════ -->
       <section id="story" class="scene scene--story" aria-labelledby="story-title">
         <div class="page">
-          <span class="page__corner page__corner--tl" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="lazy" decoding="async"></span>
-          <span class="page__corner page__corner--br" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="lazy" decoding="async"></span>
+          <span class="page__corner page__corner--tl" aria-hidden="true"></span>
+          <span class="page__corner page__corner--br" aria-hidden="true"></span>
 
           <div class="page__inner">
             <p class="kicker kicker--center reveal" data-content="content.storyKicker">The Chronicle</p>
@@ -312,7 +326,9 @@
       <!-- ═══ Ⅳ · SAVE THE DATE ═════════════════════════════════ -->
       <section id="save-the-date" class="scene scene--std" aria-labelledby="std-title">
         <div class="scene-body scene-body--narrow reveal" data-element-key="std-note">
-          <img class="std-emblem" src="assets/art/dome-sultan.png" alt="" loading="lazy" decoding="async" aria-hidden="true">
+          <span class="std-emblem-wrap" aria-hidden="true">
+            <img class="std-emblem" src="assets/art/dome-sultan.png" alt="" loading="lazy" decoding="async">
+          </span>
           <h2 id="std-title" class="std-title" data-content="content.saveDateTitle">Save the Date</h2>
           <p class="std-crossing script" data-content="content.saveDateCrossing">the mayun, the mehndi, the Nikah &amp; the Walima</p>
           <p class="std-numerals" data-content="wedding.numerals">09 · 10 · 2027</p>
@@ -538,8 +554,8 @@
         <span class="watermark-script" lang="ar" dir="rtl" aria-hidden="true" data-element-key="rsvp-watermark">النُّور</span>
         <div class="scene-body">
           <div class="rsvp-card reveal">
-            <span class="page__corner page__corner--tl" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="lazy" decoding="async"></span>
-            <span class="page__corner page__corner--br" aria-hidden="true"><img src="assets/art/corner-sultan.png" alt="" loading="lazy" decoding="async"></span>
+            <span class="page__corner page__corner--tl" aria-hidden="true"></span>
+            <span class="page__corner page__corner--br" aria-hidden="true"></span>
 
             <p class="kicker kicker--center kicker--ink" data-content="content.rsvpKicker">Your Reply</p>
             <h2 id="rsvp-title" class="rsvp-title" data-content="content.rsvpTitle">Kindly Respond</h2>
@@ -629,7 +645,7 @@
 
       <!-- ═══ ⅩⅠ · A CLOSING DUA ════════════════════════════════ -->
       <section id="closing" class="scene scene--closing" aria-labelledby="closing-title">
-        <img class="closing-plate reveal" data-element-key="closing-swag" src="assets/art/dome-sultan.png" alt="" loading="lazy" decoding="async" aria-hidden="true">
+        <img class="closing-plate reveal" data-element-key="closing-swag" src="assets/art/flourish-sultan.png" alt="" loading="lazy" decoding="async" aria-hidden="true">
         <div class="scene-body">
           <p class="closing-script" data-content="content.closingScript">with all our love</p>
           <h2 id="closing-title" class="closing-names script" data-content="couple.names">Layla &amp; Omar</h2>

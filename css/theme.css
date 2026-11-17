@@ -85,21 +85,40 @@ body {
   pointer-events: none;
 }
 
-/* corner arabesques — quiet, mirrored */
+/* corner arabesques — fine quarter-arc guards with a gilded bead,
+   drawn in CSS so they are crisp at every DPI and never clip */
 .opening__corner {
   position: absolute;
-  width: clamp(96px, 12vw, 170px);
-  opacity: .55;
-  -webkit-mask-image: radial-gradient(130% 130% at var(--mx, 0%) var(--my, 0%), #000 50%, transparent 74%);
-  mask-image: radial-gradient(130% 130% at var(--mx, 0%) var(--my, 0%), #000 50%, transparent 74%);
+  width: clamp(72px, 10vw, 128px);
+  aspect-ratio: 1;
   pointer-events: none;
   z-index: 1;
 }
-.opening__corner img { display: block; width: 100%; height: auto; }
-.opening__corner--tl { top: 0; left: 0; }
-.opening__corner--tr { top: 0; right: 0; transform: scaleX(-1); --mx: 100%; }
-.opening__corner--bl { bottom: 0; left: 0; transform: scaleY(-1); --my: 100%; }
-.opening__corner--br { bottom: 0; right: 0; transform: scale(-1); --mx: 100%; --my: 100%; }
+.opening__corner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid var(--gold-line-strong);
+  border-left: 1px solid var(--gold-line-strong);
+  border-top-left-radius: 100% 100%;
+  opacity: .55;
+}
+.opening__corner::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  left: 29%;
+  top: 29%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: linear-gradient(135deg, #DCC083 0%, #A8843C 100%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--champagne) 45%, transparent);
+  opacity: .9;
+}
+.opening__corner--tl { top: 14px; left: 14px; }
+.opening__corner--tr { top: 14px; right: 14px; transform: scaleX(-1); }
+.opening__corner--bl { bottom: 14px; left: 14px; transform: scaleY(-1); }
+.opening__corner--br { bottom: 14px; right: 14px; transform: scale(-1); }
 
 .opening__lanterns { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .opening__lantern {
